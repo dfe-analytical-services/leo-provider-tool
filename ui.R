@@ -37,6 +37,8 @@
 ui <- function(input, output, session) {
   fluidPage(
     # use_tota11y(),
+    tags$head(includeHTML(("google-analytics.html"))),
+    shinyGovstyle::skip_to_main(),
     title = tags$head(
       tags$link(
         rel = "shortcut icon",
