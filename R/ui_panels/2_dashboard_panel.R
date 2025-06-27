@@ -135,8 +135,8 @@ dashboard_panel <- function() {
                 ),
                 gov_row(
                   column(
-                    width = 3,
-                    actionButton("apply_filters", "Apply my selections")
+                    width = 6,
+                    button_Input("apply_filters", "Apply my selections")
                   )
                 ), # this is the gov_row bracket!
                 gov_row(
@@ -251,14 +251,15 @@ dashboard_panel <- function() {
               # Data table --------------------------------------------------------------------------------------------------------
               value = "datatable",
               "Data Table",
+              br(),
               column(
                 width = 6,
-                paste("Download the selected data:"),
-                downloadButton(
+                br(),
+                download_button(
                   outputId = "downloadData",
-                  label = "Download data",
-                  icon = shiny::icon("download"),
-                  class = "downloadButton"
+                  button_label = "Download selected data",
+                  file_type = "CSV",
+                  file_size = "less than 20 MB"
                 )
               ),
               column(
