@@ -52,6 +52,19 @@ shhh(library(tidyr))
 shhh(library(forcats))
 shhh(library(shinyBS))
 
+shhh(library(showtext))
+shhh(library(systemfonts))
+
+# Fonts for charts ------------------------------------------------------------
+font_add("dejavu", "www/fonts/DejaVuSans.ttf")
+register_font(
+  "dejavu",
+  plain = "www/fonts/DejaVuSans.ttf",
+  bold = "www/fonts/DejaVuSans-Bold.ttf",
+  italic = "www/fonts/DejaVuSans-Oblique.ttf",
+  bolditalic = "www/fonts/DejaVuSans-BoldOblique.ttf"
+)
+showtext_auto()
 
 # Functions --------------------------------------------------------------------
 
@@ -81,6 +94,99 @@ source("R/datatable.R")
 source("R/ui_panels/0_user_guide.R")
 source("R/ui_panels/1_headline_figures.R")
 source("R/ui_panels/2_dashboard_panel.R")
+
+
+var_lookup <- get_var_lookup()
+
+# Extract meta data
+metadata <- read_meta_data()
+
+choicesTaxYear <- metadata %>%
+  filter(filter_name == "tax_year") %>%
+  pull(filter_value)
+
+choicesYAG <- metadata %>%
+  filter(filter_name == "YAG") %>%
+  pull(filter_value)
+
+choicesProviderCountry <- metadata %>%
+  filter(filter_name == "provider_country_name") %>%
+  pull(filter_value)
+
+# In selections, we want to display the country 'Total' as 'Total (aggregate only)' so we need to name the vector
+names(choicesProviderCountry) <- choicesProviderCountry
+names(choicesProviderCountry)[choicesProviderCountry == "Total"] <- "Total (aggregate only)"
+
+choicesProviderRegion <- metadata %>%
+  filter(filter_name == "provider_region_name") %>%
+  filter(filter_value != "Total") %>%
+  pull(filter_value)
+
+choicesProviderType <- metadata %>%
+  filter(filter_name == "provider_type") %>%
+  filter(filter_value != "Total") %>%
+  pull(filter_value)
+
+choicesProviderName <- metadata %>%
+  filter(filter_name == "provider_name") %>%
+  filter(filter_value != "Total") %>%
+  pull(filter_value)
+
+
+choicesProviderGeog <- list(
+  "Provider types" = as.list(choicesProviderType),
+  "Regions" = as.list(choicesProviderRegion),
+  "Providers" = as.list(choicesProviderName)
+)
+
+choicesCharType <- metadata %>%
+  filter(filter_name == "characteristic_type") %>%
+  pull(filter_value)
+
+names(choicesCharType) <- get_var_names(choicesCharType)
+
+choicesCharValue <- metadata %>%
+  filter(filter_name == "characteristic_value") %>%
+  pull(filter_value)
+
+choicesCharValueTable <- metadata %>%
+  filter(
+    filter_name %in% choicesCharType,
+    filter_value %in% choicesCharValue
+  ) %>%
+  select(filter_name, filter_value)
+
+choicesSubject <- metadata %>%
+  filter(filter_name == "cah2_subject_name") %>%
+  pull(filter_value)
+
+
+# This gives options for colour grouping of graph columns
+choicesColGrouping <- metadata %>%
+  mutate(filter_name = ifelse(filter_name %in% c("provider_region_name", "provider_type", "provider_name"), "provider_geog", filter_name)) %>%
+  filter(!filter_name %in% c(
+    "characteristic_type", "sex", "ethnicity", "prior_attainment_code", "POLAR4",
+    "home_region_name", "current_region_name", "provider_LAD", "cah3_subject_name", "academic_year", "indicator"
+  )) %>%
+  pull(filter_name) %>%
+  unique()
+
+names(choicesColGrouping) <- sapply(choicesColGrouping, get_var_name)
+
+# This gives options for the indicator to be graphed in the Outcomes tab
+choicesOutcomesIndicator <- metadata %>%
+  filter(filter_name == "indicator") %>%
+  pull(filter_value)
+
+names(choicesOutcomesIndicator) <- sapply(choicesOutcomesIndicator, get_var_name)
+
+
+
+# Load CSV into an in memory database  ----------------------------------------------------------------------------
+
+# 1. Create an in-memory SQLite database
+con <- dbConnect(RSQLite::SQLite(), ":memory:")
+read_provider_data(con)
 
 
 # appLoadingCSS ----------------------------------------------------------------

@@ -4,6 +4,7 @@ on:
     branches:
       - main
       - development
+      - eesp/updates
   pull_request:
     branches:
       - main
