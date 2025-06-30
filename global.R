@@ -143,7 +143,7 @@ choicesCharType <- metadata %>%
   filter(filter_name == "characteristic_type") %>%
   pull(filter_value)
 
-names(choicesCharType) <- get_var_names(choicesCharType)
+names(choicesCharType) <- get_var_names(choicesCharType, var_lookup)
 
 choicesCharValue <- metadata %>%
   filter(filter_name == "characteristic_value") %>%
@@ -171,14 +171,14 @@ choicesColGrouping <- metadata %>%
   pull(filter_name) %>%
   unique()
 
-names(choicesColGrouping) <- sapply(choicesColGrouping, get_var_name)
+names(choicesColGrouping) <- sapply(choicesColGrouping, get_var_name, var_lookup)
 
 # This gives options for the indicator to be graphed in the Outcomes tab
 choicesOutcomesIndicator <- metadata %>%
   filter(filter_name == "indicator") %>%
   pull(filter_value)
 
-names(choicesOutcomesIndicator) <- sapply(choicesOutcomesIndicator, get_var_name)
+names(choicesOutcomesIndicator) <- sapply(choicesOutcomesIndicator, get_var_name, var_lookup)
 
 
 

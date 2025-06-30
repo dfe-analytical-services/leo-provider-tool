@@ -120,7 +120,7 @@ server <- function(input, output, session) {
     charVals <- intersect(c(choicesCharValue), c(charVals))
     print(charVals)
     charVals <- c("All graduates", charVals)
-    names(charVals) <- get_var_names(charVals)
+    names(charVals) <- get_var_names(charVals, var_lookup)
 
     updateSelectizeInput(session, "selectCharValue", choices = charVals)
 
@@ -197,7 +197,7 @@ server <- function(input, output, session) {
 
 
 
-    names(choices) <- get_var_names(choices)
+    names(choices) <- get_var_names(choices, var_lookup)
 
     choices <- append(choices, c(`No Colour Grouping` = "noGroup"), after = 0)
 

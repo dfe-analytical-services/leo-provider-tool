@@ -1,6 +1,6 @@
 generate_column_name <- function(vars) {
   col_names <- sapply(vars, function(var) {
-    col_name <- get_var_name(var)
+    col_name <- get_var_name(var, var_lookup)
 
     return(col_name)
   })
@@ -37,7 +37,7 @@ format_data <- function(data) {
       across(earnings_adjusted_lower:earnings_adjusted_upper, format_earnings, adjusted = TRUE),
       across(sust_emp_with_or_without_fs:activity_not_captured, format_outcome),
       across(c(grads:grads_matched, grads_earnings_include), format_count),
-      across(c(characteristic_type, characteristic_value), get_var_names)
+      across(c(characteristic_type, characteristic_value), get_var_names, var_lookup)
     ) %>%
     rename_with(generate_column_name)
 }

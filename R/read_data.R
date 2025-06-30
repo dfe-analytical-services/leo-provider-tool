@@ -21,7 +21,7 @@ get_var_lookup <- function() {
   select(var_lookup, -variable)
 }
 
-get_var_name <- function(var, expect_name = TRUE) {
+get_var_name <- function(var, var_lookup, expect_name = TRUE) {
   if (var %in% rownames(var_lookup)) {
     var_name <- var_lookup[[var, "name"]]
   } else {
@@ -37,7 +37,7 @@ get_var_names <- function(vars, ...) {
   sapply(vars, get_var_name, ...)
 }
 
-get_var_unit <- function(var, expect_name = TRUE) {
+get_var_unit <- function(var, var_lookup, expect_name = TRUE) {
   if (var %in% rownames(var_lookup)) {
     var_unit <- var_lookup[[var, "unit"]]
   } else {
