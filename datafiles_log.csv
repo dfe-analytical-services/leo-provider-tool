@@ -2,9 +2,6 @@ filename,status
 data/la_maintained_schools_revenue_reserve_final.csv,published
 data/date_format.csv,published
 data/date_format.meta.csv,published
-data/some_unpublished_data.csv,unpublished
-data/outcomes_meta.csv,unpublished
-data/earnings_meta.csv,unpublished
 data/metadata.csv,reference
 data/var_lookup.csv,reference
-data/provider_data.parquet,dummy
+data/provider_data.parquet,published

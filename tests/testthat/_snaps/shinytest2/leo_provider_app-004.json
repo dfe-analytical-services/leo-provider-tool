@@ -1,0 +1,18 @@
+{
+  "input": {
+    "dashboardPanels": "earnings",
+    "headlineGeog": "HEI",
+    "headlineYAG": "5",
+    "navlistPanel": "dashboard",
+    "selectCharType": "All graduates",
+    "selectCharValue": "All graduates",
+    "selectProviderGeography": "HEI",
+    "selectSubject": [
+      "Total",
+      "Chemistry"
+    ]
+  },
+  "output": {
+
+  }
+}

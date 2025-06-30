@@ -22,121 +22,96 @@ dashboard_panel <- function() {
                   column(
                     width = 3,
                     class = "fixed-height",
-                    pickerInput(
+                    selectizeInput(
                       inputId = "selectTaxYear",
                       label = "Tax year",
                       choices = choicesTaxYear,
                       selected = default_tax_year,
                       multiple = TRUE,
-                      options = list("actions-box" = TRUE),
-                      choicesOpt = NULL,
-                      width = "100%",
-                      inline = FALSE
+                      width = "100%"
                     )
                   ),
                   column(
                     width = 3,
                     class = "fixed-height",
-                    pickerInput(
+                    selectizeInput(
                       inputId = "selectYAG",
                       label = "Years after graduation",
                       choices = choicesYAG,
                       selected = default_YAG,
                       multiple = TRUE,
-                      options = list("actions-box" = TRUE),
-                      choicesOpt = NULL,
-                      width = "100%",
-                      inline = FALSE
+                      width = "100%"
                     )
                   ),
                   column(
                     width = 3,
                     class = "fixed-height",
-                    pickerInput(
+                    selectizeInput(
                       inputId = "selectProviderCountry",
                       label = "Provider country",
                       choices = choicesProviderCountry,
                       selected = default_provider_country,
                       multiple = TRUE,
-                      options = list("actions-box" = TRUE),
-                      choicesOpt = NULL,
-                      width = "100%",
-                      inline = FALSE
+                      width = "100%"
                     )
                   ),
                   column(
                     width = 3,
                     class = "fixed-height",
-                    pickerInput(
+                    selectizeInput(
                       inputId = "selectProviderGeography",
-                      label = "Provider or aggregation",
+                      label = "Provider or aggregation (max: 6)",
                       choices = choicesProviderGeog,
                       selected = default_provider_geog,
                       multiple = TRUE,
-                      options = list(
-                        "actions-box" = TRUE,
-                        "live-search" = TRUE
-                      ),
-                      choicesOpt = NULL,
-                      width = "100%",
-                      inline = FALSE
+                      options = list(maxItems = 6),
+                      width = "100%"
+                    )
+                  ),
+                ),
+                gov_row(
+                  column(
+                    width = 12,
+                    class = "fixed-height",
+                    selectizeInput(
+                      inputId = "selectSubject",
+                      label = "Subject studied (max: 6)",
+                      choices = choicesSubject,
+                      selected = default_cah2_subject_name,
+                      multiple = TRUE,
+                      options = list(maxItems = 6),
+                      width = "100%"
                     )
                   )
                 ),
                 gov_row(
                   column(
                     width = 3,
-                    class = "fixed-height",
-                    pickerInput(
-                      inputId = "selectSubject",
-                      label = "Subject studied",
-                      choices = choicesSubject,
-                      selected = default_cah2_subject_name,
-                      multiple = TRUE,
-                      options = list(
-                        "actions-box" = TRUE,
-                        "live-search" = TRUE
-                      ),
-                      choicesOpt = NULL,
-                      width = "100%",
-                      inline = FALSE
-                    )
-                  ),
-                  column(
-                    width = 3,
-                    class = "fixed-height",
-                    pickerInput(
+                    selectInput(
                       inputId = "selectCharType",
                       label = "Characteristic type",
                       choices = choicesCharType,
                       selected = default_characteristic_type,
-                      multiple = TRUE,
-                      options = list("max-options" = 1),
-                      choicesOpt = NULL,
-                      width = "100%",
-                      inline = FALSE
+                      width = "100%"
                     )
                   ),
                   column(
-                    width = 3,
-                    class = "fixed-height",
-                    pickerInput(
+                    width = 9,
+                    selectizeInput(
                       inputId = "selectCharValue",
-                      label = "Characteristic value",
+                      label = "Characteristic value (max: 8)",
                       choices = "All graduates",
                       selected = "All graduates",
                       multiple = TRUE,
-                      options = list("actions-box" = TRUE),
-                      choicesOpt = NULL,
-                      width = "100%",
-                      inline = FALSE
+                      options = list(maxItems = 8),
+                      width = "100%"
                     )
-                  ),
+                  )
                 ),
                 gov_row(
                   column(
-                    width = 3,
-                    actionButton("apply_filters", "Apply my selections")
+                    width = 6,
+                    button_Input("apply_filters", "Apply my selections")
                   )
                 ), # this is the gov_row bracket!
                 gov_row(
@@ -251,14 +226,15 @@ dashboard_panel <- function() {
               # Data table --------------------------------------------------------------------------------------------------------
               value = "datatable",
               "Data Table",
+              br(),
               column(
                 width = 6,
-                paste("Download the selected data:"),
-                downloadButton(
+                br(),
+                download_button(
                   outputId = "downloadData",
-                  label = "Download data",
-                  icon = shiny::icon("download"),
-                  class = "downloadButton"
+                  button_label = "Download selected data",
+                  file_type = "CSV",
+                  file_size = "less than 10 MB"
                 )
               ),
               column(

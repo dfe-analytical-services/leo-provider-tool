@@ -1,0 +1,328 @@
+/* Fonts ------------------------------------------------------------------- */
+/* main body text */
+body {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-size: 1.188rem;
+  margin-bottom: 1.25rem;
+}
+
+p {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-size: 1.188rem;
+  margin-bottom: 1.25rem;
+  overflow-wrap: anywhere; /* email too big for smaller screens and needs to wrap */
+}
+
+/* heading text */
+.govuk-header__link--service-name {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-size: 1.875rem;
+}
+
+.h1,
+h1 {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.0416666667;
+  margin-top: 0;
+  margin-bottom: 1.875rem;
+  overflow-wrap: break-word; /* apprenticeships in H1 is too big for some mobiles and needs to wrap */
+}
+
+.h2,
+h2 {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.0416666667;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+.h3,
+h3 {
+  font-family: "Helvetica Neue","Arial", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.0416666667;
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
+}
+
+/* feedback banner */
+.govuk-phase-banner__text {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-size: 1rem;
+  color: #000000;
+  overflow-wrap: anywhere; /* email too big for smaller screens and needs to wrap */
+}
+
+/* well text */
+label {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-size: 1.188rem;
+}
+
+/* bslib card text */
+.bslib-card .card-header, .bslib-card .card-footer {
+    font-size: 1.188rem;
+}
+
+.bslib-card {
+    box-shadow: none;
+}
+
+/* second dropdown options */
+.selectize-input {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  font-size: 1.188rem;
+  color: #000000;
+}
+
+/* Bullet point formatting ------------------------------------------------- */
+li {
+  margin-bottom: 0.313rem;
+  display: list-item;
+  text-align: -webkit-match-parent;
+  unicode-bidi: isolate;
+}
+
+ul {
+  padding-left: 1.25rem;
+  list-style-type: disc;
+}
+
+/* Link text styling ------------------------------------------------------- */
+a {
+  font-family: "Helvetica Neue", "Arial", sans-serif;
+  text-decoration: underline;
+  text-decoration-thickness: max(0.063rem);
+  text-underline-offset: .1578em;
+  word-break: break-word;
+  background-color: transparent;
+}
+
+a:visited {
+  color: #4C2C92;
+}
+
+a:focus {
+  outline: 0.188rem solid rgba(0, 0, 0, 0);
+  color: #0b0c0c;
+  background-color: #fd0 !important;
+  box-shadow: 0 -0.125rem #fd0, 0 0.25rem #0b0c0c;
+  text-decoration: underline;
+}
+
+a:hover {
+  outline: 0.188rem solid rgba(0, 0, 0, 0);
+  color: #0b0c0c;
+  background-color: #fd0 !important;
+  box-shadow: 0 -0.125rem #fd0, 0 0.25rem #0b0c0c;
+  text-decoration: underline;
+}
+
+/* GOV.UK containers ------------------------------------------------------- */
+.govuk-header__link:hover {
+  color: #000;
+}
+
+/* force things like beta banner to full width */
+.govuk-width-container {
+  max-width: 100% !important;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+/* reduce the padding around govuk-main-wrapper */
+.govuk-main-wrapper {
+  padding: 1rem;
+}
+
+/* reduce the padding even more around the beta banner */
+.govuk-phase-banner.govuk-width-container.govuk-main-wrapper {
+  padding: 0.5rem !important;
+}
+
+
+/* removing white gutters on govheader container */
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  --bs-gutter-x: 0;
+  --bs-gutter-y: 0;
+}
+
+.container-fluid {
+  padding: 0;
+}
+
+.row {
+  margin-right: 0;
+}
+
+/* sets the main area width. Originally set to 66.667% in the GDS 
+template. 80% works well here to reduce white space on the right hand side.*/
+.col-sm-8 {
+  width: 80%
+}
+
+/* GOV.UK footer ----------------------------------------------------------- */
+/* footer padding */
+.govuk-footer {
+  padding: 2rem;
+}
+
+/* This makes it look like the footer extends on shorter pages  */
+html {
+  background-color: #f3f2f1;
+}
+
+/* Contents links, remove visited style ------------------------------------ */
+.action-button:visited {
+  color: #1d70b8;
+}
+
+.action-button:hover .action-button:focus {
+  color: #000;
+}
+
+/* backlinks --------------------------------------------------------------- */
+.govuk-back-link:link {
+  max-width: fit-content;
+}
+
+/* Card tabs CSS ----------------------------------------------------------- */
+/* TODO - fix the borders and margins on the tabs */
+
+/* GOV.UK button copied in from shiny gov style ---------------------------- */
+.gov-uk-button {
+    font-family: "Helvetica Neue", "Arial", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 400;
+    font-size: 1rem;
+    line-height: 1.1875;
+    box-sizing: border-box;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    max-width: fit-content;
+    margin: 0 0 1.375rem;
+    padding: 0.5rem 0.625rem 0.438rem;
+    border: 0.125rem solid transparent;
+    border-radius: 0;
+    color: #fff !important;
+    background-color: #00703c;
+    box-shadow: 0 0.125rem 0 #002d18;
+    text-align: center;
+    vertical-align: top;
+    cursor: pointer;
+    -webkit-appearance: none;
+    text-decoration: none;
+}
+
+.gov-uk-button:active {
+    top: 0.125rem;
+    background-color: #00703c !important;
+}
+
+.gov-uk-button:hover {
+    top: 0.125rem;
+    text-decoration: none;
+    background-color: #005a30 !important;
+}
+
+.gov-uk-button:focus:not(:active):not(:hover) {
+    border-color: #fd0;
+    color: #fff !important;
+    background-color: #005a30 !important;
+    text-decoration: none;
+    box-shadow: 0 0.125rem 0 #000;
+}
+
+.gov-uk-button:focus {
+    border-color: #fd0;
+    outline: 0.188rem solid transparent;
+    box-shadow: inset 0 0 0 0.063rem #fd0;
+}
+
+/* custom sort indicators -------------------------------------------------- */
+.bar-sort-header:hover,
+.bar-sort-header:focus {
+  background: #fd0;
+}
+
+/* Add a top bar on ascending sort */
+.bar-sort-header[aria-sort="ascending"] {
+  box-shadow: inset 0 0.188rem 0 0 #1d70b8;
+}
+
+/* Add a bottom bar on descending sort */
+.bar-sort-header[aria-sort="descending"] {
+  box-shadow: inset 0 -0.188rem 0 0 #1d70b8;
+}
+
+/* Add an animation when toggling between ascending and descending sort */
+.bar-sort-header {
+  transition: box-shadow 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Table row highlighting -------------------------------------------------- */
+.rt-tr-highlight:hover {
+    background-color: #fd0;
+}
+
+.rt-search {
+  align-self: normal !important;
+}
+
+/* Highlight on the page button indicators --------------------------------- */
+.rt-page-button:hover,
+.rt-page-button:focus,
+.rt-page-button:active {
+    background: #fd0 !important; 
+    box-shadow: inset 0 -0.188rem 0 0 #1d70b8;
+}
+
+/* dropdowns CSS ----------------------------------------------------------- */
+.selectize-input:hover,
+.selectize-input:active,
+.selectize-input:focus {
+  box-shadow: inset 0 -0.188rem 0 0 #1d70b8;
+}
+
+/* Change focus border color to yellow */
+.selectize-input.focus {
+    border-color: #fd0 !important;
+    box-shadow: 0 0 0.313rem #fd0 !important;
+}
+
+/* Change focus color to bright yellow */
+.selectize-dropdown-content .option:hover,
+.selectize-dropdown-content .option:focus,
+.selectize-dropdown-content .option.active {
+    background-color: #fd0 !important;
+    color: black !important;
+}
+
+/* Map reset button CSS ---------------------------------------------------- */
+.leaflet-touch .leaflet-bar button:focus {
+  outline: 0.188rem solid rgba(0, 0, 0, 0);
+  color: #0b0c0c;
+  background-color: #fd0 !important;
+  box-shadow: 0 -0.125rem #fd0, 0 0.25rem #0b0c0c;
+}
+
+.leaflet-touch .leaflet-bar button:hover {
+  outline: 0.188rem solid rgba(0, 0, 0, 0);
+  color: #0b0c0c;
+  background-color: #fd0 !important;
+  box-shadow: 0 -0.125rem #fd0, 0 0.25rem #0b0c0c;
+}
+

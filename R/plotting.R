@@ -9,7 +9,7 @@ generate_outcomes_tooltip <- function(varying, combined_varying_filter, indicato
   combined_varying_filter <- as.character(combined_varying_filter)
   for (idx in seq_along(combined_varying_filter)) {
     tooltip <- paste0(
-      get_var_name(indicator), ": ", format_outcome(value[[idx]]), "\n",
+      get_var_name(indicator, var_lookup), ": ", format_outcome(value[[idx]]), "\n",
       "from ", format_count(sample_size[[idx]]), " graduates\n\n"
     )
     tooltip <- paste0(tooltip, generate_tooltip_body(varying, combined_varying_filter[[idx]]))
@@ -29,7 +29,7 @@ generate_earnings_tooltip <- function(varying, combined_varying_filter, earnings
     values <- strsplit(combined_varying_filter[[idx]], split = "@")[[1]]
     tooltip <- if_else(adjusted, "Adjusted by Region\n", "")
     for (var_idx in seq_along(earnings_list_)) {
-      tooltip <- paste0(tooltip, get_var_name(earnings_vars[[var_idx]]), ": ", format_earnings(earnings_list_[[var_idx]]), "\n")
+      tooltip <- paste0(tooltip, get_var_name(earnings_vars[[var_idx]], var_lookup), ": ", format_earnings(earnings_list_[[var_idx]]), "\n")
     }
     tooltip <- paste0(tooltip, "from ", format_count(sample_size[[idx]]), " graduates\n\n")
     tooltip <- paste0(tooltip, generate_tooltip_body(varying, combined_varying_filter[[idx]]))
@@ -45,11 +45,11 @@ generate_earnings_tooltip <- function(varying, combined_varying_filter, earnings
 
 
 generate_label_string <- function(label, value, end_str = "") {
-  label_formatted <- get_var_name(label)
-  unit <- get_var_unit(label)
+  label_formatted <- get_var_name(label, var_lookup)
+  unit <- get_var_unit(label, var_lookup)
 
   # If the value is in the lookup, use the version from the lookup. Don't throw a warning if it isn't though.
-  value <- get_var_name(value, expect_name = FALSE)
+  value <- get_var_name(value, var_lookup, expect_name = FALSE)
 
   out <- paste0(label_formatted, ": ", value, unit, end_str)
 }
@@ -128,6 +128,7 @@ plotOutcomes <- function(outcomes_selected, colourGrouping, indicator) {
     select(where(~ any(. > 1))) %>%
     colnames()
 
+  print(varying)
   # The label generation code relies on the provider geog type being directly after the provider geography.
   # If both vary, this is already the case, but if the user has selected multiple geogs with the same geog type,
   # the geog type does not get added to varying by the above code. Hence we need to make sure it is there.
@@ -143,7 +144,7 @@ plotOutcomes <- function(outcomes_selected, colourGrouping, indicator) {
   }
 
   constant <- setdiff(colnames(variable_counts), varying)
-
+  print(constant)
   if (length(varying) == 0) {
     varying <- "tax_year"
   }
@@ -214,9 +215,9 @@ plotOutcomes <- function(outcomes_selected, colourGrouping, indicator) {
       labels = bar_labels
     ) +
     labs(
-      title = get_var_name(indicator),
+      title = get_var_name(indicator, var_lookup),
       subtitle = generate_subtitle(constant, temp_data),
-      y = get_var_name(indicator)
+      y = get_var_name(indicator, var_lookup)
     ) +
     # xlab("TBC") +
     # ylab(str_wrap("Percent in sustained employment with or without further study", 12)) +

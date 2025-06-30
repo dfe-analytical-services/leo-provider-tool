@@ -108,27 +108,24 @@ server <- function(input, output, session) {
   # The characteristic value options depend on the characteristic type selected, so we need to update the options
   # whenever the characteristic type is opened or closed
 
-  observeEvent(input$selectCharType_open, {
-    # We only want to run this is the selection box is closed - if it is open the user is still choosing.
-    if (input$selectCharType_open == TRUE) {
-      return(NULL)
-    }
-
+  observeEvent(input$selectCharType, {
     charType <- input$selectCharType
+    print(charType)
 
     charVals <- choicesCharValueTable %>%
       filter(filter_name == charType) %>%
       pull(filter_value)
 
+    print(charVals)
     charVals <- intersect(c(choicesCharValue), c(charVals))
-
+    print(charVals)
     charVals <- c("All graduates", charVals)
-    names(charVals) <- get_var_names(charVals)
+    names(charVals) <- get_var_names(charVals, var_lookup)
 
-    updatePickerInput(session, "selectCharValue", choices = charVals)
+    updateSelectizeInput(session, "selectCharValue", choices = charVals)
 
     if (charType == "All graduates") {
-      updatePickerInput(session, "selectCharValue", selected = "All graduates")
+      updateSelectizeInput(session, "selectCharValue", selected = "All graduates")
     }
   })
 
@@ -200,7 +197,7 @@ server <- function(input, output, session) {
 
 
 
-    names(choices) <- get_var_names(choices)
+    names(choices) <- get_var_names(choices, var_lookup)
 
     choices <- append(choices, c(`No Colour Grouping` = "noGroup"), after = 0)
 
@@ -217,10 +214,18 @@ server <- function(input, output, session) {
 
 
   # This will be run anytime the apply filters button is pressed.
-  selected_data_ <- eventReactive(input$apply_filters,
+  selected_data_ <- eventReactive(
+    input$apply_filters,
     ignoreNULL = FALSE,
     ignoreInit = FALSE,
     {
+      print(input$selectTaxYear)
+      print(input$selectYAG)
+      print(input$selectProviderCountry)
+      print(input$selectProviderGeography)
+      print(input$selectSubject)
+      print(input$selectCharValue)
+
       if (!(is_empty(input$selectTaxYear) | is_empty(input$selectYAG) | is_empty(input$selectProviderCountry) | is_empty(input$selectProviderGeography) |
         is_empty(input$selectSubject) | is_empty(input$selectCharValue))) {
         taxYear <- input$selectTaxYear
@@ -262,7 +267,7 @@ server <- function(input, output, session) {
         choices <- generate_colour_choices(data)
         updateSelectizeInput(inputId = "selectOutcomeColGrouping", choices = choices, selected = "noGroup")
         updateSelectizeInput(inputId = "selectEarningsColGrouping", choices = choices, selected = "noGroup")
-
+        print(data)
         data
       }
     }
