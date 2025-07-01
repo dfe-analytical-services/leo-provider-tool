@@ -18,7 +18,7 @@ valuebox_panel <- function() {
         gov_row(
           column(
             width = 4,
-            pickerInput(
+            selectInput(
               inputId = "headlineTaxYear",
               label = "Tax year",
               choices = choicesTaxYear,
@@ -28,7 +28,7 @@ valuebox_panel <- function() {
           ),
           column(
             width = 4,
-            pickerInput(
+            selectInput(
               inputId = "headlineYAG",
               label = "Years after graduation",
               choices = choicesYAG,
@@ -38,11 +38,10 @@ valuebox_panel <- function() {
           ),
           column(
             width = 4,
-            pickerInput(
+            selectInput(
               inputId = "headlineGeog",
               label = "Provider or Aggregation",
               choices = choicesProviderGeog,
-              options = list(`live-search` = TRUE),
               selected = "HEI",
               width = "100%",
             )
