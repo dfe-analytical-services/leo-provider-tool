@@ -110,15 +110,12 @@ server <- function(input, output, session) {
 
   observeEvent(input$selectCharType, {
     charType <- input$selectCharType
-    print(charType)
 
     charVals <- choicesCharValueTable %>%
       filter(filter_name == charType) %>%
       pull(filter_value)
 
-    print(charVals)
     charVals <- intersect(c(choicesCharValue), c(charVals))
-    print(charVals)
     charVals <- c("All graduates", charVals)
     names(charVals) <- get_var_names(charVals, var_lookup)
 
