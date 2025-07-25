@@ -118,22 +118,24 @@ server <- function(input, output, session) {
     charVals <- intersect(c(choicesCharValue), c(charVals))
     charVals <- c("All graduates", charVals)
     names(charVals) <- get_var_names(charVals, var_lookup)
-    
+
     # use grouped choices when charType is ethnicity
     if (charType == "ethnicity") {
-      broad_ethnicity <- c("All white",
-                          "All Asian / Asian British",
-                          "All Black / African / Caribbean / Black British",
-                          "All mixed / multiple ethnic groups",
-                          "All other ethnic groups",
-                          "Unknown")
+      broad_ethnicity <- c(
+        "All white",
+        "All Asian / Asian British",
+        "All Black / African / Caribbean / Black British",
+        "All mixed / multiple ethnic groups",
+        "All other ethnic groups",
+        "Unknown"
+      )
       detailed_ethnicity <- setdiff(charVals, c("All graduates", broad_ethnicity))
-      
+
       choicesEthnicityGroup <- list(
         "Broad ethnicity groups" = setNames(broad_ethnicity, get_var_names(broad_ethnicity, var_lookup)),
         "Detailed ethnicity groups" = setNames(detailed_ethnicity, get_var_names(detailed_ethnicity, var_lookup))
       )
-      
+
       charVals <- c("All graduates" = "All graduates", choicesEthnicityGroup)
     }
 
@@ -295,10 +297,10 @@ server <- function(input, output, session) {
 
     selected_data_()
   })
-  
+
   ## Apply filters but without filtering by provider -----------------------------------------------------------------
   # In order to create a 'download for all providers dataset'
-  
+
   all_providers_data_ <- eventReactive(
     input$apply_filters,
     ignoreNULL = FALSE,
@@ -310,7 +312,7 @@ server <- function(input, output, session) {
       subject <- input$selectSubject
       charType <- input$selectCharType
       charVal <- input$selectCharValue
-      
+
       data <- tbl(con, "LEO_data") %>%
         filter(
           tax_year %in% taxYear,
@@ -593,7 +595,7 @@ server <- function(input, output, session) {
       write.csv(selected_data(), file)
     }
   )
-  
+
   # Download the selected underlying data for all providers button
   output$downloadAllProviders <- downloadHandler(
     filename = "LEO_provider_data_all_providers.csv",

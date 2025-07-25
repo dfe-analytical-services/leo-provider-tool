@@ -2,5 +2,5 @@
 .Rhistory
 .RData
 .Ruserdata
-provider_data_20250716.parquet
-metadata_20250716.csv
+data/provider_data_20250716.parquet
+data/metadata_20250716.csv
