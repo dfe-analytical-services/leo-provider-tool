@@ -118,6 +118,24 @@ server <- function(input, output, session) {
     charVals <- intersect(c(choicesCharValue), c(charVals))
     charVals <- c("All graduates", charVals)
     names(charVals) <- get_var_names(charVals, var_lookup)
+    
+    # use grouped choices when charType is ethnicity
+    if (charType == "ethnicity") {
+      broad_ethnicity <- c("All white",
+                          "All Asian / Asian British",
+                          "All Black / African / Caribbean / Black British",
+                          "All mixed / multiple ethnic groups",
+                          "All other ethnic groups",
+                          "Unknown")
+      detailed_ethnicity <- setdiff(charVals, c("All graduates", broad_ethnicity))
+      
+      choicesEthnicityGroup <- list(
+        "Broad ethnicity groups" = setNames(broad_ethnicity, get_var_names(broad_ethnicity, var_lookup)),
+        "Detailed ethnicity groups" = setNames(detailed_ethnicity, get_var_names(detailed_ethnicity, var_lookup))
+      )
+      
+      charVals <- c("All graduates" = "All graduates", choicesEthnicityGroup)
+    }
 
     updateSelectizeInput(session, "selectCharValue", choices = charVals)
 
@@ -277,6 +295,39 @@ server <- function(input, output, session) {
 
     selected_data_()
   })
+  
+  ## Apply filters but without filtering by provider -----------------------------------------------------------------
+  # In order to create a 'download for all providers dataset'
+  
+  all_providers_data_ <- eventReactive(
+    input$apply_filters,
+    ignoreNULL = FALSE,
+    ignoreInit = FALSE,
+    {
+      taxYear <- input$selectTaxYear
+      YAG_ <- input$selectYAG
+      country <- input$selectProviderCountry
+      subject <- input$selectSubject
+      charType <- input$selectCharType
+      charVal <- input$selectCharValue
+      
+      data <- tbl(con, "LEO_data") %>%
+        filter(
+          tax_year %in% taxYear,
+          YAG %in% YAG_,
+          provider_country_name %in% country,
+          cah2_subject_name %in% subject,
+          characteristic_type %in% c("All graduates", charType),
+          characteristic_value %in% charVal
+        ) %>%
+        collect() %>%
+        mutate(
+          YAG = as.character(YAG),
+          characteristic_type = if_else(characteristic_value == "All graduates", "All graduates", characteristic_type)
+        )
+      data
+    }
+  )
 
   ## Find missing combinations ---------------------------------------------------------------------------------------
 
@@ -535,11 +586,19 @@ server <- function(input, output, session) {
 
   # Datatable tab ---------------------------------------------------------------------------------------------------
 
-  # Download the underlying data button
+  # Download the selected underlying data button
   output$downloadData <- downloadHandler(
-    filename = "LEO_providers_underlying_data.csv",
+    filename = "LEO_provider_data.csv",
     content = function(file) {
       write.csv(selected_data(), file)
+    }
+  )
+  
+  # Download the selected underlying data for all providers button
+  output$downloadAllProviders <- downloadHandler(
+    filename = "LEO_provider_data_all_providers.csv",
+    content = function(file) {
+      write.csv(all_providers_data_(), file)
     }
   )
 

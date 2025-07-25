@@ -227,14 +227,24 @@ dashboard_panel <- function() {
               value = "datatable",
               "Data Table",
               br(),
-              column(
-                width = 6,
-                br(),
-                download_button(
-                  outputId = "downloadData",
-                  button_label = "Download selected data",
-                  file_type = "CSV",
-                  file_size = "less than 10 MB"
+              fluidRow(
+                column(
+                  width = 6,
+                  download_button(
+                    outputId = "downloadData",
+                    button_label = "Download selected data",
+                    file_type = "CSV",
+                    file_size = "less than 10 MB"
+                  )
+                ),
+                column(
+                  width = 6,
+                  download_button(
+                    outputId = "downloadAllProviders",
+                    button_label = "Download for all providers",
+                    file_type = "CSV",
+                    file_size = "less than 10 MB"
+                  )
                 )
               ),
               column(

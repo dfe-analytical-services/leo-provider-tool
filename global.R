@@ -114,8 +114,8 @@ choicesProviderCountry <- metadata %>%
   pull(filter_value)
 
 # In selections, we want to display the country 'Total' as 'Total (aggregate only)' so we need to name the vector
-names(choicesProviderCountry) <- choicesProviderCountry
-names(choicesProviderCountry)[choicesProviderCountry == "Total"] <- "Total (aggregate only)"
+#names(choicesProviderCountry) <- choicesProviderCountry
+#names(choicesProviderCountry)[choicesProviderCountry == "Total"] <- "Total (aggregate only)"
 
 choicesProviderRegion <- metadata %>%
   filter(filter_name == "provider_region_name") %>%
@@ -134,6 +134,7 @@ choicesProviderName <- metadata %>%
 
 
 choicesProviderGeog <- list(
+  "Countries" = as.list(choicesProviderCountry),
   "Provider types" = as.list(choicesProviderType),
   "Regions" = as.list(choicesProviderRegion),
   "Providers" = as.list(choicesProviderName)
