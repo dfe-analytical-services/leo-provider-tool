@@ -67,7 +67,7 @@ dashboard_panel <- function() {
                       options = list(maxItems = 6),
                       width = "100%"
                     )
-                  ),
+                  )
                 ),
                 gov_row(
                   column(

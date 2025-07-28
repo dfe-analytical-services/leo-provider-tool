@@ -54,6 +54,8 @@ shhh(library(shinyBS))
 
 shhh(library(showtext))
 shhh(library(systemfonts))
+# to create dropdown box subheadings options list
+shhh(library(tibble))
 
 # Fonts for charts ------------------------------------------------------------
 font_add("dejavu", "www/fonts/DejaVuSans.ttf")
@@ -113,7 +115,7 @@ choicesProviderCountry <- metadata %>%
   filter(filter_name == "provider_country_name") %>%
   pull(filter_value)
 
-#In selections, we want to display the country 'Total' as 'Total (aggregate only)' so we need to name the vector
+# In selections, we want to display the country 'Total' as 'Total (aggregate only)' so we need to name the vector
 names(choicesProviderCountry) <- choicesProviderCountry
 names(choicesProviderCountry)[choicesProviderCountry == "Total"] <- "Total (aggregate only)"
 
@@ -127,18 +129,40 @@ choicesProviderType <- metadata %>%
   filter(filter_value != "Total") %>%
   pull(filter_value)
 
-choicesProviderName <- metadata %>%
-  filter(filter_name == "provider_name") %>%
-  filter(filter_value != "Total") %>%
-  pull(filter_value)
+# Relabel the provider types
+ProviderType_labels <- c(
+  "HEI" = "Higher Education Institution (HEI)",
+  "FEC" = "Further Education College (FEC)",
+  "AP"  = "Alternative Provision (AP)"
+)
+choicesProviderType <- setNames(choicesProviderType, ProviderType_labels[choicesProviderType])
 
+choicesProviderName <- metadata %>%
+  filter(filter_name == "provider_name", filter_value != "Total") %>%
+  select(filter_grouping_label, filter_value) %>%
+  split(.$filter_grouping_label) %>%
+  lapply(function(x) setNames(x$filter_value, x$filter_value))
+
+# Reorder the provider list so HEI#s first, followed by FEC then AP
+ProviderName_order <- c("HEI", "FEC", "AP")
+choicesProviderName <- choicesProviderName[ProviderName_order]
+names(choicesProviderName) <- c(
+  "HEI" = "Higher Education Institution (HEI) providers",
+  "FEC" = "Further Education College (FEC) providers",
+  "AP"  = "Alternative Provision (AP) providers"
+)[names(choicesProviderName)]
+
+# choicesProviderGeog <- list(
+#   "Provider types" = setNames(choicesProviderType, choicesProviderType),
+#   "Regions" = setNames(choicesProviderRegion, choicesProviderRegion),
+#   "Providers" = choicesProviderName
+# )
 
 choicesProviderGeog <- list(
-  #"Countries" = as.list(choicesProviderCountry),
-  "Provider types" = as.list(choicesProviderType),
-  "Regions" = as.list(choicesProviderRegion),
-  "Providers" = as.list(choicesProviderName)
-)
+  "Provider types" = choicesProviderType,
+  "Regions" = setNames(choicesProviderRegion, choicesProviderRegion)
+) %>%
+  append(choicesProviderName)
 
 choicesCharType <- metadata %>%
   filter(filter_name == "characteristic_type") %>%
@@ -240,7 +264,8 @@ google_analytics_key <- "Z967JJVQQX"
 default_tax_year <- "2022/2023"
 default_YAG <- 5
 default_provider_country <- "Total"
-default_provider_geog <- "HEI"
+# default_provider_geog <- "HEI"
+default_provider_geog <- c("HEI")
 default_cah2_subject_name <- "Total"
 default_characteristic_type <- "All graduates"
 
