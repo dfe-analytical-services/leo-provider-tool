@@ -175,10 +175,15 @@ server <- function(input, output, session) {
       intersect(c(choicesProviderType), c(Geography))
     }
 
-    providerName <- if (is_empty(intersect(c(choicesProviderName), c(Geography)))) {
+
+    # Note that for providerName we use allProviderNames rather than choicesProviderName,
+    # as choicesProviderName is a list of named character vectors, not a single character vector
+    # the intersect can't compare a list of vectors to a single vector
+    allProviderNames <- unlist(choicesProviderName, use.names = FALSE)
+    providerName <- if (is_empty(intersect(c(allProviderNames), c(Geography)))) {
       "empty"
     } else {
-      intersect(c(choicesProviderName), c(Geography))
+      intersect(c(allProviderNames), c(Geography))
     }
 
     providerCountry <- if (is_empty(intersect(c(choicesProviderCountry), c(Geography)))) {
@@ -254,6 +259,8 @@ server <- function(input, output, session) {
         geography <- input$selectProviderGeography
 
         providerGeographies <- disaggGeog(geography)
+
+        print(providerGeographies)
 
         data <- tbl(con, "LEO_data") %>%
           filter(
