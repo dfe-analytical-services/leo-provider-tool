@@ -159,6 +159,7 @@ names(choicesProviderName) <- c(
 # )
 
 choicesProviderGeog <- list(
+  "Countries" = choicesProviderCountry,
   "Provider types" = choicesProviderType,
   "Regions" = setNames(choicesProviderRegion, choicesProviderRegion)
 ) %>%

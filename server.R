@@ -248,15 +248,19 @@ server <- function(input, output, session) {
       print(input$selectSubject)
       print(input$selectCharValue)
 
-      if (!(is_empty(input$selectTaxYear) | is_empty(input$selectYAG) | is_empty(input$selectProviderCountry) | is_empty(input$selectProviderGeography) |
+      if (!(is_empty(input$selectTaxYear) | is_empty(input$selectYAG) |
+        # is_empty(input$selectProviderCountry) |
+        is_empty(input$selectProviderGeography) |
         is_empty(input$selectSubject) | is_empty(input$selectCharValue))) {
         taxYear <- input$selectTaxYear
         YAG_ <- input$selectYAG
-        country <- input$selectProviderCountry
+        # country <- input$selectProviderCountry
         subject <- input$selectSubject
         charType <- input$selectCharType
         charVal <- input$selectCharValue
         geography <- input$selectProviderGeography
+
+        print(geography)
 
         providerGeographies <- disaggGeog(geography)
 
@@ -266,7 +270,7 @@ server <- function(input, output, session) {
           filter(
             tax_year %in% taxYear,
             YAG %in% YAG_,
-            provider_country_name %in% country,
+            # provider_country_name %in% country,
             cah2_subject_name %in% subject,
             characteristic_type %in% c("All graduates", charType),
             characteristic_value %in% charVal
@@ -278,8 +282,9 @@ server <- function(input, output, session) {
             TRUE ~ "error"
           )) %>%
           filter(
-            (provider_region_name %in% providerGeographies$region & provider_name == "Total" |
-              provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" |
+            (provider_country_name %in% providerGeographies$country & provider_name == "Total" & provider_region_name == "Total" |
+              provider_region_name %in% providerGeographies$region & provider_name == "Total" |
+              provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" & provider_country_name == "England" |
               provider_name %in% providerGeographies$name)
           ) %>%
           collect() %>%
@@ -371,7 +376,13 @@ server <- function(input, output, session) {
         characteristic_value = charVal,
         provider_geog = geography
       ) %>%
-        mutate(characteristic_type = if_else(characteristic_value == "All graduates", "All graduates", characteristic_type))
+        mutate(
+          characteristic_type =
+            if_else(characteristic_value == "All graduates",
+              "All graduates",
+              characteristic_type
+            )
+        )
 
       if (nrow(selected_data_()) == 0) {
         missing_combs <- all_combs
