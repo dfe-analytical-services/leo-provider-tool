@@ -43,18 +43,18 @@ dashboard_panel <- function() {
                       width = "100%"
                     )
                   ),
-                  column(
-                    width = 3,
-                    class = "fixed-height",
-                    selectizeInput(
-                      inputId = "selectProviderCountry",
-                      label = "Provider country",
-                      choices = choicesProviderCountry,
-                      selected = default_provider_country,
-                      multiple = TRUE,
-                      width = "100%"
-                    )
-                  ),
+                  # column(
+                  #   width = 3,
+                  #   class = "fixed-height",
+                  #   selectizeInput(
+                  #     inputId = "selectProviderCountry",
+                  #     label = "Provider country",
+                  #     choices = choicesProviderCountry,
+                  #     selected = default_provider_country,
+                  #     multiple = TRUE,
+                  #     width = "100%"
+                  #   )
+                  # ),
                   column(
                     width = 3,
                     class = "fixed-height",
