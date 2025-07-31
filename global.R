@@ -117,7 +117,7 @@ choicesProviderCountry <- metadata %>%
 
 # In selections, we want to display the country 'Total' as 'Total (aggregate only)' so we need to name the vector
 names(choicesProviderCountry) <- choicesProviderCountry
-names(choicesProviderCountry)[choicesProviderCountry == "Total"] <- "Total (aggregate only)"
+# names(choicesProviderCountry)[choicesProviderCountry == "Total"] <- "Total (aggregate only)"
 
 choicesProviderRegion <- metadata %>%
   filter(filter_name == "provider_region_name") %>%
@@ -143,7 +143,7 @@ choicesProviderName <- metadata %>%
   split(.$filter_grouping_label) %>%
   lapply(function(x) setNames(x$filter_value, x$filter_value))
 
-# Reorder the provider list so HEI#s first, followed by FEC then AP
+# Reorder the provider list so HEI's first, followed by FEC then AP
 ProviderName_order <- c("HEI", "FEC", "AP")
 choicesProviderName <- choicesProviderName[ProviderName_order]
 names(choicesProviderName) <- c(
@@ -152,18 +152,15 @@ names(choicesProviderName) <- c(
   "AP"  = "Alternative Provision (AP) providers"
 )[names(choicesProviderName)]
 
-# choicesProviderGeog <- list(
-#   "Provider types" = setNames(choicesProviderType, choicesProviderType),
-#   "Regions" = setNames(choicesProviderRegion, choicesProviderRegion),
-#   "Providers" = choicesProviderName
-# )
 
 choicesProviderGeog <- list(
-  "Countries" = choicesProviderCountry,
-  "Provider types" = choicesProviderType,
-  "Regions" = setNames(choicesProviderRegion, choicesProviderRegion)
+  "Countries (HEI only)" = choicesProviderCountry,
+  "Provider types (England only)" = choicesProviderType,
+  "Regions (HEI only)" = setNames(choicesProviderRegion, choicesProviderRegion)
 ) %>%
   append(choicesProviderName)
+
+
 
 choicesCharType <- metadata %>%
   filter(filter_name == "characteristic_type") %>%
@@ -264,9 +261,8 @@ google_analytics_key <- "Z967JJVQQX"
 # This will show on first load, and also when filters are reset
 default_tax_year <- "2022/2023"
 default_YAG <- 5
-default_provider_country <- "Total"
-# default_provider_geog <- "HEI"
-default_provider_geog <- c("HEI")
+# default_provider_country <- "Total"
+default_provider_geog <- "Total"
 default_cah2_subject_name <- "Total"
 default_characteristic_type <- "All graduates"
 

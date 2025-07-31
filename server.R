@@ -260,7 +260,6 @@ server <- function(input, output, session) {
         charVal <- input$selectCharValue
         geography <- input$selectProviderGeography
 
-        print(geography)
 
         providerGeographies <- disaggGeog(geography)
 
@@ -277,12 +276,15 @@ server <- function(input, output, session) {
           ) %>%
           mutate(provider_geog = case_when(
             provider_name != "Total" ~ provider_name,
-            provider_name == "Total" & provider_region_name == "Total" ~ provider_type,
+            provider_name == "Total" & provider_region_name == "Total" & provider_type == "HEI" ~ provider_country_name,
+            provider_name == "Total" & provider_region_name == "Total" & provider_type != "HEI" ~ provider_type,
+            # provider_name == "Total" & provider_region_name == "Total" ~ provider_type,
+            # provider_name == "Total" & provider_region_name == "Total" ~ paste(provider_country_name, provider_type),
             provider_name == "Total" & provider_region_name != "Total" ~ provider_region_name,
             TRUE ~ "error"
           )) %>%
           filter(
-            (provider_country_name %in% providerGeographies$country & provider_name == "Total" & provider_region_name == "Total" |
+            (provider_country_name %in% providerGeographies$country & provider_name == "Total" & provider_region_name == "Total" & provider_type == "HEI" |
               provider_region_name %in% providerGeographies$region & provider_name == "Total" |
               provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" & provider_country_name == "England" |
               provider_name %in% providerGeographies$name)
@@ -320,19 +322,30 @@ server <- function(input, output, session) {
     {
       taxYear <- input$selectTaxYear
       YAG_ <- input$selectYAG
-      country <- input$selectProviderCountry
+      # country <- input$selectProviderCountry
       subject <- input$selectSubject
       charType <- input$selectCharType
       charVal <- input$selectCharValue
+      # Include geography here so that all_providers_data will include any aggregations that have been selected, as well as all providers
+      geography <- input$selectProviderGeography
+
+      providerGeographies <- disaggGeog(geography)
 
       data <- tbl(con, "LEO_data") %>%
         filter(
           tax_year %in% taxYear,
           YAG %in% YAG_,
-          provider_country_name %in% country,
+          # provider_country_name %in% country,
           cah2_subject_name %in% subject,
           characteristic_type %in% c("All graduates", charType),
           characteristic_value %in% charVal
+        ) %>%
+        # This filtering includes any selected aggregations and all providers
+        filter(
+          ((provider_country_name %in% providerGeographies$country & provider_name == "Total" & provider_region_name == "Total" & provider_type == "HEI") |
+            (provider_region_name %in% providerGeographies$region & provider_name == "Total") |
+            (provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" & provider_country_name == "England") |
+            (provider_name != "Total"))
         ) %>%
         collect() %>%
         mutate(
@@ -359,7 +372,7 @@ server <- function(input, output, session) {
     {
       taxYear <- input$selectTaxYear
       YAG_ <- input$selectYAG
-      country <- input$selectProviderCountry
+      # country <- input$selectProviderCountry
       subject <- input$selectSubject
       charType <- input$selectCharType
       charVal <- input$selectCharValue
@@ -370,7 +383,7 @@ server <- function(input, output, session) {
       all_combs <- crossing(
         tax_year = taxYear,
         YAG = as.character(YAG_),
-        provider_country_name = country,
+        # provider_country_name = country,
         cah2_subject_name = subject,
         characteristic_type = charType,
         characteristic_value = charVal,
@@ -384,13 +397,20 @@ server <- function(input, output, session) {
             )
         )
 
+      # Remove 'HEI' if 'England' is present
+      # since if you select England and HEI in filter selection box, even though you've selected two options there is only one row to display
+      # because the 'By country' groupings are for HEI only and the 'By type' groupings are for England only - so England (HEI only) or HEI (England only) are the same
+      if ("England" %in% all_combs$provider_geog) {
+        all_combs <- all_combs %>% filter(provider_geog != "HEI")
+      }
+
       if (nrow(selected_data_()) == 0) {
         missing_combs <- all_combs
       } else {
         missing_combs <- anti_join(all_combs, selected_data_(), by = c(
           "tax_year",
           "YAG",
-          "provider_country_name",
+          # "provider_country_name",
           "cah2_subject_name",
           "characteristic_type",
           "characteristic_value",
@@ -430,6 +450,10 @@ server <- function(input, output, session) {
 
   output$missingCombsData <- renderDataTable({
     data <- missing_combinations() %>%
+      mutate(
+        characteristic_type = get_var_names(characteristic_type, var_lookup),
+        characteristic_value = get_var_names(characteristic_value, var_lookup)
+      ) %>%
       rename_with(generate_column_name)
     datatable(data,
       options = list(
@@ -610,7 +634,28 @@ server <- function(input, output, session) {
   output$downloadData <- downloadHandler(
     filename = "LEO_provider_data.csv",
     content = function(file) {
-      write.csv(selected_data(), file)
+      data <- selected_data()
+      # Remove 'provider_geog' if it exists
+      data <- data %>% select(-provider_geog)
+
+      # Include a new prior_attainment_code_lookup column, if prior_attainment is the selected characteristic_type in the data being downloaded
+      # Create a new column with NA by default
+      data$prior_attainment_code_lookup <- NA
+
+      # Identify rows where characteristic_type == "prior_attainment_code"
+      idx <- data$characteristic_type == "prior_attainment_code"
+
+      # Apply label lookup only to those rows
+      data$prior_attainment_code_lookup[idx] <- get_var_names(data$characteristic_value[idx], var_lookup)
+
+      # Remove the column if it's all NA
+      if (all(is.na(data$prior_attainment_code_lookup))) {
+        data$prior_attainment_code_lookup <- NULL
+      }
+
+      write.csv(data, file)
+
+      # write.csv(selected_data(), file)
     }
   )
 
@@ -618,7 +663,24 @@ server <- function(input, output, session) {
   output$downloadAllProviders <- downloadHandler(
     filename = "LEO_provider_data_all_providers.csv",
     content = function(file) {
-      write.csv(all_providers_data_(), file)
+      # Include a new prior_attainment_code_lookup column, if prior_attainment is the selected characteristic_type in the data being downloaded
+      all_providers_data <- all_providers_data_()
+      # Create a new column with NA by default
+      all_providers_data$prior_attainment_code_lookup <- NA
+
+      # Identify rows where characteristic_type == "prior_attainment_code"
+      idx <- all_providers_data$characteristic_type == "prior_attainment_code"
+
+      # Apply label lookup only to those rows
+      all_providers_data$prior_attainment_code_lookup[idx] <- get_var_names(all_providers_data$characteristic_value[idx], var_lookup)
+
+      # Remove the column if it's all NA
+      if (all(is.na(all_providers_data$prior_attainment_code_lookup))) {
+        all_providers_data$prior_attainment_code_lookup <- NULL
+      }
+
+      write.csv(all_providers_data, file)
+      # write.csv(all_providers_data_(), file)
     }
   )
 
