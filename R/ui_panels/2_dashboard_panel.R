@@ -229,7 +229,7 @@ dashboard_panel <- function() {
               br(),
               fluidRow(
                 column(
-                  width = 6,
+                  width = 4,
                   download_button(
                     outputId = "downloadData",
                     button_label = "Download selected data",
@@ -238,10 +238,19 @@ dashboard_panel <- function() {
                   )
                 ),
                 column(
-                  width = 6,
+                  width = 4,
                   download_button(
                     outputId = "downloadAllProviders",
                     button_label = "Download for all providers",
+                    file_type = "CSV",
+                    file_size = "less than 10 MB"
+                  )
+                ),
+                column(
+                  width = 4,
+                  download_button(
+                    outputId = "downloadAllSubjects",
+                    button_label = "Download for all subjects",
                     file_type = "CSV",
                     file_size = "less than 10 MB"
                   )

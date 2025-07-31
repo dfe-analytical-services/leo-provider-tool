@@ -315,46 +315,78 @@ server <- function(input, output, session) {
   ## Apply filters but without filtering by provider -----------------------------------------------------------------
   # In order to create a 'download for all providers dataset'
 
-  all_providers_data_ <- eventReactive(
-    input$apply_filters,
-    ignoreNULL = FALSE,
-    ignoreInit = FALSE,
-    {
-      taxYear <- input$selectTaxYear
-      YAG_ <- input$selectYAG
-      # country <- input$selectProviderCountry
-      subject <- input$selectSubject
-      charType <- input$selectCharType
-      charVal <- input$selectCharValue
-      # Include geography here so that all_providers_data will include any aggregations that have been selected, as well as all providers
-      geography <- input$selectProviderGeography
+  all_providers_data_ <- reactive({
+    taxYear <- input$selectTaxYear
+    YAG_ <- input$selectYAG
+    # country <- input$selectProviderCountry
+    subject <- input$selectSubject
+    charType <- input$selectCharType
+    charVal <- input$selectCharValue
+    # Include geography here so that all_providers_data will include any aggregations that have been selected, as well as all providers
+    geography <- input$selectProviderGeography
 
-      providerGeographies <- disaggGeog(geography)
+    providerGeographies <- disaggGeog(geography)
 
-      data <- tbl(con, "LEO_data") %>%
-        filter(
-          tax_year %in% taxYear,
-          YAG %in% YAG_,
-          # provider_country_name %in% country,
-          cah2_subject_name %in% subject,
-          characteristic_type %in% c("All graduates", charType),
-          characteristic_value %in% charVal
-        ) %>%
-        # This filtering includes any selected aggregations and all providers
-        filter(
-          ((provider_country_name %in% providerGeographies$country & provider_name == "Total" & provider_region_name == "Total" & provider_type == "HEI") |
-            (provider_region_name %in% providerGeographies$region & provider_name == "Total") |
-            (provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" & provider_country_name == "England") |
-            (provider_name != "Total"))
-        ) %>%
-        collect() %>%
-        mutate(
-          YAG = as.character(YAG),
-          characteristic_type = if_else(characteristic_value == "All graduates", "All graduates", characteristic_type)
-        )
-      data
-    }
-  )
+    data <- tbl(con, "LEO_data") %>%
+      filter(
+        tax_year %in% taxYear,
+        YAG %in% YAG_,
+        # provider_country_name %in% country,
+        cah2_subject_name %in% subject,
+        characteristic_type %in% c("All graduates", charType),
+        characteristic_value %in% charVal
+      ) %>%
+      # This filtering includes any selected aggregations and all providers
+      filter(
+        ((provider_country_name %in% providerGeographies$country & provider_name == "Total" & provider_region_name == "Total" & provider_type == "HEI") |
+          (provider_region_name %in% providerGeographies$region & provider_name == "Total") |
+          (provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" & provider_country_name == "England") |
+          (provider_name != "Total"))
+      ) %>%
+      collect() %>%
+      mutate(
+        YAG = as.character(YAG),
+        characteristic_type = if_else(characteristic_value == "All graduates", "All graduates", characteristic_type)
+      )
+    data
+  })
+
+  ## Apply filters but without filtering by subject -----------------------------------------------------------------
+  # In order to create a 'download for all subjects' dataset
+
+  all_subjects_data_ <- reactive({
+    taxYear <- input$selectTaxYear
+    YAG_ <- input$selectYAG
+    # subject <- input$selectSubject
+    charType <- input$selectCharType
+    charVal <- input$selectCharValue
+    geography <- input$selectProviderGeography
+
+    providerGeographies <- disaggGeog(geography)
+
+    data <- tbl(con, "LEO_data") %>%
+      filter(
+        tax_year %in% taxYear,
+        YAG %in% YAG_,
+        # cah2_subject_name %in% subject,
+        characteristic_type %in% c("All graduates", charType),
+        characteristic_value %in% charVal
+      ) %>%
+      filter(
+        ((provider_country_name %in% providerGeographies$country & provider_name == "Total" & provider_region_name == "Total" & provider_type == "HEI") |
+          (provider_region_name %in% providerGeographies$region & provider_name == "Total") |
+          (provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" & provider_country_name == "England") |
+          (provider_name %in% providerGeographies$name))
+      ) %>%
+      collect() %>%
+      mutate(
+        YAG = as.character(YAG),
+        characteristic_type = if_else(characteristic_value == "All graduates", "All graduates", characteristic_type)
+      )
+    data
+  })
+
+
 
   ## Find missing combinations ---------------------------------------------------------------------------------------
 
@@ -630,59 +662,131 @@ server <- function(input, output, session) {
 
   # Datatable tab ---------------------------------------------------------------------------------------------------
 
-  # Download the selected underlying data button
+  add_prior_attainment_lookup <- function(df, var_lookup) {
+    df %>%
+      # create a new column that has the descriptions of prior attainment
+      mutate(
+        prior_attainment_code_lookup = dplyr::case_when(
+          characteristic_type == "prior_attainment_code" ~
+            get_var_names(characteristic_value, var_lookup),
+          TRUE ~ NA_character_
+        )
+      ) %>%
+      # drop column if it's all null (if prior_attainment not selected as characteristic filter)
+      {
+        if (all(is.na(.$prior_attainment_code_lookup))) {
+          select(., -prior_attainment_code_lookup)
+        } else {
+          .
+        }
+      }
+  }
+
   output$downloadData <- downloadHandler(
     filename = "LEO_provider_data.csv",
     content = function(file) {
-      data <- selected_data()
-      # Remove 'provider_geog' if it exists
-      data <- data %>% select(-provider_geog)
-
-      # Include a new prior_attainment_code_lookup column, if prior_attainment is the selected characteristic_type in the data being downloaded
-      # Create a new column with NA by default
-      data$prior_attainment_code_lookup <- NA
-
-      # Identify rows where characteristic_type == "prior_attainment_code"
-      idx <- data$characteristic_type == "prior_attainment_code"
-
-      # Apply label lookup only to those rows
-      data$prior_attainment_code_lookup[idx] <- get_var_names(data$characteristic_value[idx], var_lookup)
-
-      # Remove the column if it's all NA
-      if (all(is.na(data$prior_attainment_code_lookup))) {
-        data$prior_attainment_code_lookup <- NULL
-      }
-
-      write.csv(data, file)
-
-      # write.csv(selected_data(), file)
+      selected_data() %>%
+        select(-provider_geog) %>%
+        add_prior_attainment_lookup(var_lookup) %>%
+        write.csv(file, row.names = FALSE)
     }
   )
 
-  # Download the selected underlying data for all providers button
   output$downloadAllProviders <- downloadHandler(
     filename = "LEO_provider_data_all_providers.csv",
     content = function(file) {
-      # Include a new prior_attainment_code_lookup column, if prior_attainment is the selected characteristic_type in the data being downloaded
-      all_providers_data <- all_providers_data_()
-      # Create a new column with NA by default
-      all_providers_data$prior_attainment_code_lookup <- NA
-
-      # Identify rows where characteristic_type == "prior_attainment_code"
-      idx <- all_providers_data$characteristic_type == "prior_attainment_code"
-
-      # Apply label lookup only to those rows
-      all_providers_data$prior_attainment_code_lookup[idx] <- get_var_names(all_providers_data$characteristic_value[idx], var_lookup)
-
-      # Remove the column if it's all NA
-      if (all(is.na(all_providers_data$prior_attainment_code_lookup))) {
-        all_providers_data$prior_attainment_code_lookup <- NULL
-      }
-
-      write.csv(all_providers_data, file)
-      # write.csv(all_providers_data_(), file)
+      all_providers_data_() %>%
+        add_prior_attainment_lookup(var_lookup) %>%
+        write.csv(file, row.names = FALSE)
     }
   )
+
+  output$downloadAllSubjects <- downloadHandler(
+    filename = "LEO_provider_data_all_subjects.csv",
+    content = function(file) {
+      all_subjects_data_() %>%
+        add_prior_attainment_lookup(var_lookup) %>%
+        write.csv(file, row.names = FALSE)
+    }
+  )
+  #
+  # # Download the selected underlying data button
+  # output$downloadData <- downloadHandler(
+  #   filename = "LEO_provider_data.csv",
+  #   content = function(file) {
+  #     data <- selected_data()
+  #     # Remove 'provider_geog' if it exists
+  #     data <- data %>% select(-provider_geog)
+  #
+  #     # Include a new prior_attainment_code_lookup column, if prior_attainment is the selected characteristic_type in the data being downloaded
+  #     # Create a new column with NA by default
+  #     data$prior_attainment_code_lookup <- NA
+  #
+  #     # Identify rows where characteristic_type == "prior_attainment_code"
+  #     idx <- data$characteristic_type == "prior_attainment_code"
+  #
+  #     # Apply label lookup only to those rows
+  #     data$prior_attainment_code_lookup[idx] <- get_var_names(data$characteristic_value[idx], var_lookup)
+  #
+  #     # Remove the column if it's all NA
+  #     if (all(is.na(data$prior_attainment_code_lookup))) {
+  #       data$prior_attainment_code_lookup <- NULL
+  #     }
+  #
+  #     write.csv(data, file)
+  #
+  #     # write.csv(selected_data(), file)
+  #   }
+  # )
+  #
+  # # Download the selected underlying data for all providers button
+  # output$downloadAllProviders <- downloadHandler(
+  #   filename = "LEO_provider_data_all_providers.csv",
+  #   content = function(file) {
+  #     # Include a new prior_attainment_code_lookup column, if prior_attainment is the selected characteristic_type in the data being downloaded
+  #     all_providers_data <- all_providers_data_()
+  #     # Create a new column with NA by default
+  #     all_providers_data$prior_attainment_code_lookup <- NA
+  #
+  #     # Identify rows where characteristic_type == "prior_attainment_code"
+  #     idx <- all_providers_data$characteristic_type == "prior_attainment_code"
+  #
+  #     # Apply label lookup only to those rows
+  #     all_providers_data$prior_attainment_code_lookup[idx] <- get_var_names(all_providers_data$characteristic_value[idx], var_lookup)
+  #
+  #     # Remove the column if it's all NA
+  #     if (all(is.na(all_providers_data$prior_attainment_code_lookup))) {
+  #       all_providers_data$prior_attainment_code_lookup <- NULL
+  #     }
+  #
+  #     write.csv(all_providers_data, file)
+  #     # write.csv(all_providers_data_(), file)
+  #   }
+  # )
+  #
+  # # Download the selected underlying data for all subjects button
+  # output$downloadAllSubjects <- downloadHandler(
+  #   filename = "LEO_provider_data_all_subjects.csv",
+  #   content = function(file) {
+  #     # Include a new prior_attainment_code_lookup column, if prior_attainment is the selected characteristic_type in the data being downloaded
+  #     all_subjects_data <- all_subjects_data_()
+  #     # Create a new column with NA by default
+  #     all_subjects_data$prior_attainment_code_lookup <- NA
+  #
+  #     # Identify rows where characteristic_type == "prior_attainment_code"
+  #     idx <- all_subjects_data$characteristic_type == "prior_attainment_code"
+  #
+  #     # Apply label lookup only to those rows
+  #     all_subjects_data$prior_attainment_code_lookup[idx] <- get_var_names(all_subjects_data$characteristic_value[idx], var_lookup)
+  #
+  #     # Remove the column if it's all NA
+  #     if (all(is.na(all_subjects_data$prior_attainment_code_lookup))) {
+  #       all_subjects_data$prior_attainment_code_lookup <- NULL
+  #     }
+  #
+  #     write.csv(all_subjects_data, file)
+  #   }
+  # )
 
   ## This creates the data table, in line with user filter selections
 
