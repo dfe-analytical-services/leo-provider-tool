@@ -48,7 +48,7 @@ dashboard_panel <- function() {
                     class = "fixed-height",
                     selectizeInput(
                       inputId = "selectProviderGeography",
-                      label = "Provider or aggregation (max: 6)",
+                      label = "Providers and overall totals (max: 6)",
                       choices = choicesProviderGeog,
                       selected = default_provider_geog,
                       multiple = TRUE,
@@ -218,7 +218,7 @@ dashboard_panel <- function() {
               fluidRow(
                 column(
                   width = 4,
-                  download_button(
+                  shinyGovstyle::download_button(
                     outputId = "downloadData",
                     button_label = "Download selected data",
                     file_type = "CSV",
