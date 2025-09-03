@@ -87,11 +87,10 @@ dashboard_panel <- function() {
                     width = 9,
                     selectizeInput(
                       inputId = "selectCharValue",
-                      label = "Characteristic value (max: 8)",
+                      label = "Characteristic value",
                       choices = "All graduates",
                       selected = "All graduates",
                       multiple = TRUE,
-                      options = list(maxItems = 8),
                       width = "100%"
                     )
                   )
