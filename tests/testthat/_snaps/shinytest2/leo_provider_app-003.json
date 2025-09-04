@@ -6,7 +6,7 @@
     "navlistPanel": "dashboard",
     "selectCharType": "All graduates",
     "selectCharValue": "All graduates",
-    "selectProviderGeography": "HEI",
+    "selectProviderGeography": "Total",
     "selectSubject": [
       "Total",
       "Chemistry"
