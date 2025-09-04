@@ -54,7 +54,7 @@ get_var_units <- function(vars, ...) {
 # Read Metadata ----
 read_meta_data <- function() {
   message("Reading in meta-data")
-  metadata_path <- "data/metadata_20250716.csv"
+  metadata_path <- "data/metadata.csv"
   read.csv(metadata_path, encoding = "UTF-8")
 }
 
@@ -78,7 +78,7 @@ read_meta_data <- function() {
 # write_parquet(csv_data, file_path)
 read_provider_data <- function(con) {
   message("Loading underlying data")
-  parquet_data <- read_parquet("data/provider_data_20250716.parquet")
+  parquet_data <- read_parquet("data/provider_data.parquet")
 
   # 3. Copy the data frame into the SQLite database
   dbWriteTable(con, "LEO_data", parquet_data)

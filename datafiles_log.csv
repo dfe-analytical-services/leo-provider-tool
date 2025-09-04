@@ -5,5 +5,3 @@ data/date_format.meta.csv,published
 data/metadata.csv,reference
 data/var_lookup.csv,reference
 data/provider_data.parquet,published
-data/metadata_20250716.csv,reference
-data/provider_data_20250716.parquet,unpublished
