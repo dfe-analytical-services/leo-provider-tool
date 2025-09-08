@@ -119,6 +119,26 @@ server <- function(input, output, session) {
     charVals <- c("All graduates", charVals)
     names(charVals) <- get_var_names(charVals, var_lookup)
 
+    # use grouped choices when charType is ethnicity
+    if (charType == "ethnicity") {
+      broad_ethnicity <- c(
+        "All white",
+        "All Asian / Asian British",
+        "All Black / African / Caribbean / Black British",
+        "All mixed / multiple ethnic groups",
+        "All other ethnic groups",
+        "Unknown"
+      )
+      detailed_ethnicity <- setdiff(charVals, c("All graduates", broad_ethnicity))
+
+      choicesEthnicityGroup <- list(
+        "Broad ethnicity groups" = setNames(broad_ethnicity, get_var_names(broad_ethnicity, var_lookup)),
+        "Detailed ethnicity groups" = setNames(detailed_ethnicity, get_var_names(detailed_ethnicity, var_lookup))
+      )
+
+      charVals <- c("All graduates" = "All graduates", choicesEthnicityGroup)
+    }
+
     updateSelectizeInput(session, "selectCharValue", choices = charVals)
 
     if (charType == "All graduates") {
@@ -155,10 +175,15 @@ server <- function(input, output, session) {
       intersect(c(choicesProviderType), c(Geography))
     }
 
-    providerName <- if (is_empty(intersect(c(choicesProviderName), c(Geography)))) {
+
+    # Note that for providerName we use allProviderNames rather than choicesProviderName,
+    # as choicesProviderName is a list of named character vectors, not a single character vector
+    # the intersect can't compare a list of vectors to a single vector
+    allProviderNames <- unlist(choicesProviderName, use.names = FALSE)
+    providerName <- if (is_empty(intersect(c(allProviderNames), c(Geography)))) {
       "empty"
     } else {
-      intersect(c(choicesProviderName), c(Geography))
+      intersect(c(allProviderNames), c(Geography))
     }
 
     providerCountry <- if (is_empty(intersect(c(choicesProviderCountry), c(Geography)))) {
@@ -223,36 +248,45 @@ server <- function(input, output, session) {
       print(input$selectSubject)
       print(input$selectCharValue)
 
-      if (!(is_empty(input$selectTaxYear) | is_empty(input$selectYAG) | is_empty(input$selectProviderCountry) | is_empty(input$selectProviderGeography) |
+      if (!(is_empty(input$selectTaxYear) | is_empty(input$selectYAG) |
+        # is_empty(input$selectProviderCountry) |
+        is_empty(input$selectProviderGeography) |
         is_empty(input$selectSubject) | is_empty(input$selectCharValue))) {
         taxYear <- input$selectTaxYear
         YAG_ <- input$selectYAG
-        country <- input$selectProviderCountry
+        # country <- input$selectProviderCountry
         subject <- input$selectSubject
         charType <- input$selectCharType
         charVal <- input$selectCharValue
         geography <- input$selectProviderGeography
 
+
         providerGeographies <- disaggGeog(geography)
+
+        print(providerGeographies)
 
         data <- tbl(con, "LEO_data") %>%
           filter(
             tax_year %in% taxYear,
             YAG %in% YAG_,
-            provider_country_name %in% country,
+            # provider_country_name %in% country,
             cah2_subject_name %in% subject,
             characteristic_type %in% c("All graduates", charType),
             characteristic_value %in% charVal
           ) %>%
           mutate(provider_geog = case_when(
             provider_name != "Total" ~ provider_name,
-            provider_name == "Total" & provider_region_name == "Total" ~ provider_type,
+            provider_name == "Total" & provider_region_name == "Total" & provider_type == "HEI" ~ provider_country_name,
+            provider_name == "Total" & provider_region_name == "Total" & provider_type != "HEI" ~ provider_type,
+            # provider_name == "Total" & provider_region_name == "Total" ~ provider_type,
+            # provider_name == "Total" & provider_region_name == "Total" ~ paste(provider_country_name, provider_type),
             provider_name == "Total" & provider_region_name != "Total" ~ provider_region_name,
             TRUE ~ "error"
           )) %>%
           filter(
-            (provider_region_name %in% providerGeographies$region & provider_name == "Total" |
-              provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" |
+            (provider_country_name %in% providerGeographies$country & provider_name == "Total" & provider_region_name == "Total" & provider_type == "HEI" |
+              provider_region_name %in% providerGeographies$region & provider_name == "Total" |
+              provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" & provider_country_name == "England" |
               provider_name %in% providerGeographies$name)
           ) %>%
           collect() %>%
@@ -294,7 +328,7 @@ server <- function(input, output, session) {
     {
       taxYear <- input$selectTaxYear
       YAG_ <- input$selectYAG
-      country <- input$selectProviderCountry
+      # country <- input$selectProviderCountry
       subject <- input$selectSubject
       charType <- input$selectCharType
       charVal <- input$selectCharValue
@@ -305,13 +339,26 @@ server <- function(input, output, session) {
       all_combs <- crossing(
         tax_year = taxYear,
         YAG = as.character(YAG_),
-        provider_country_name = country,
+        # provider_country_name = country,
         cah2_subject_name = subject,
         characteristic_type = charType,
         characteristic_value = charVal,
         provider_geog = geography
       ) %>%
-        mutate(characteristic_type = if_else(characteristic_value == "All graduates", "All graduates", characteristic_type))
+        mutate(
+          characteristic_type =
+            if_else(characteristic_value == "All graduates",
+              "All graduates",
+              characteristic_type
+            )
+        )
+
+      # Remove 'HEI' if 'England' is present
+      # since if you select England and HEI in filter selection box, even though you've selected two options there is only one row to display
+      # because the 'By country' groupings are for HEI only and the 'By type' groupings are for England only - so England (HEI only) or HEI (England only) are the same
+      if ("England" %in% all_combs$provider_geog) {
+        all_combs <- all_combs %>% filter(provider_geog != "HEI")
+      }
 
       if (nrow(selected_data_()) == 0) {
         missing_combs <- all_combs
@@ -319,7 +366,7 @@ server <- function(input, output, session) {
         missing_combs <- anti_join(all_combs, selected_data_(), by = c(
           "tax_year",
           "YAG",
-          "provider_country_name",
+          # "provider_country_name",
           "cah2_subject_name",
           "characteristic_type",
           "characteristic_value",
@@ -359,6 +406,10 @@ server <- function(input, output, session) {
 
   output$missingCombsData <- renderDataTable({
     data <- missing_combinations() %>%
+      mutate(
+        characteristic_type = get_var_names(characteristic_type, var_lookup),
+        characteristic_value = get_var_names(characteristic_value, var_lookup)
+      ) %>%
       rename_with(generate_column_name)
     datatable(data,
       options = list(
@@ -369,6 +420,83 @@ server <- function(input, output, session) {
       )
     )
   })
+
+  ## Apply filters but without filtering by provider -----------------------------------------------------------------
+  # In order to create a 'download for all providers dataset'
+
+  all_providers_data_ <- reactive({
+    taxYear <- input$selectTaxYear
+    YAG_ <- input$selectYAG
+    # country <- input$selectProviderCountry
+    subject <- input$selectSubject
+    charType <- input$selectCharType
+    charVal <- input$selectCharValue
+    # Include geography here so that all_providers_data will include any aggregations that have been selected, as well as all providers
+    geography <- input$selectProviderGeography
+
+    providerGeographies <- disaggGeog(geography)
+
+    data <- tbl(con, "LEO_data") %>%
+      filter(
+        tax_year %in% taxYear,
+        YAG %in% YAG_,
+        # provider_country_name %in% country,
+        cah2_subject_name %in% subject,
+        characteristic_type %in% c("All graduates", charType),
+        characteristic_value %in% charVal
+      ) %>%
+      # This filtering includes any selected aggregations and all providers
+      filter(
+        ((provider_country_name %in% providerGeographies$country & provider_name == "Total" & provider_region_name == "Total" & provider_type == "HEI") |
+          (provider_region_name %in% providerGeographies$region & provider_name == "Total") |
+          (provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" & provider_country_name == "England") |
+          (provider_name != "Total"))
+      ) %>%
+      collect() %>%
+      mutate(
+        YAG = as.character(YAG),
+        characteristic_type = if_else(characteristic_value == "All graduates", "All graduates", characteristic_type)
+      )
+    data
+  })
+
+  ## Apply filters but without filtering by subject -----------------------------------------------------------------
+  # In order to create a 'download for all subjects' dataset
+
+  all_subjects_data_ <- reactive({
+    taxYear <- input$selectTaxYear
+    YAG_ <- input$selectYAG
+    # subject <- input$selectSubject
+    charType <- input$selectCharType
+    charVal <- input$selectCharValue
+    geography <- input$selectProviderGeography
+
+    providerGeographies <- disaggGeog(geography)
+
+    data <- tbl(con, "LEO_data") %>%
+      filter(
+        tax_year %in% taxYear,
+        YAG %in% YAG_,
+        # cah2_subject_name %in% subject,
+        characteristic_type %in% c("All graduates", charType),
+        characteristic_value %in% charVal
+      ) %>%
+      filter(
+        ((provider_country_name %in% providerGeographies$country & provider_name == "Total" & provider_region_name == "Total" & provider_type == "HEI") |
+          (provider_region_name %in% providerGeographies$region & provider_name == "Total") |
+          (provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" & provider_country_name == "England") |
+          (provider_name %in% providerGeographies$name))
+      ) %>%
+      collect() %>%
+      mutate(
+        YAG = as.character(YAG),
+        characteristic_type = if_else(characteristic_value == "All graduates", "All graduates", characteristic_type)
+      )
+    data
+  })
+
+
+
 
   # Plots -----------------------------------------------------------------------------------------------------------
 
@@ -535,13 +663,55 @@ server <- function(input, output, session) {
 
   # Datatable tab ---------------------------------------------------------------------------------------------------
 
-  # Download the underlying data button
+  # Create a function to use in downloadHandler(), to include prior_attainment_code labels in downloaded data
+  add_prior_attainment_lookup <- function(df, var_lookup) {
+    df %>%
+      # create a new column that has the descriptions of prior attainment
+      mutate(
+        prior_attainment_code_lookup = dplyr::case_when(
+          characteristic_type == "prior_attainment_code" ~
+            get_var_names(characteristic_value, var_lookup),
+          TRUE ~ NA_character_
+        )
+      ) %>%
+      # drop column if it's all null (if prior_attainment not selected as characteristic filter)
+      {
+        if (all(is.na(.$prior_attainment_code_lookup))) {
+          select(., -prior_attainment_code_lookup)
+        } else {
+          .
+        }
+      }
+  }
+
   output$downloadData <- downloadHandler(
-    filename = "LEO_providers_underlying_data.csv",
+    filename = "LEO_provider_data.csv",
     content = function(file) {
-      write.csv(selected_data(), file)
+      selected_data() %>%
+        select(-provider_geog) %>%
+        add_prior_attainment_lookup(var_lookup) %>%
+        write.csv(file, row.names = FALSE)
     }
   )
+
+  output$downloadAllProviders <- downloadHandler(
+    filename = "LEO_provider_data_all_providers.csv",
+    content = function(file) {
+      all_providers_data_() %>%
+        add_prior_attainment_lookup(var_lookup) %>%
+        write.csv(file, row.names = FALSE)
+    }
+  )
+
+  output$downloadAllSubjects <- downloadHandler(
+    filename = "LEO_provider_data_all_subjects.csv",
+    content = function(file) {
+      all_subjects_data_() %>%
+        add_prior_attainment_lookup(var_lookup) %>%
+        write.csv(file, row.names = FALSE)
+    }
+  )
+
 
   ## This creates the data table, in line with user filter selections
 

@@ -47,27 +47,15 @@ dashboard_panel <- function() {
                     width = 3,
                     class = "fixed-height",
                     selectizeInput(
-                      inputId = "selectProviderCountry",
-                      label = "Provider country",
-                      choices = choicesProviderCountry,
-                      selected = default_provider_country,
-                      multiple = TRUE,
-                      width = "100%"
-                    )
-                  ),
-                  column(
-                    width = 3,
-                    class = "fixed-height",
-                    selectizeInput(
                       inputId = "selectProviderGeography",
-                      label = "Provider or aggregation (max: 6)",
+                      label = "Providers and overall totals (max: 6)",
                       choices = choicesProviderGeog,
                       selected = default_provider_geog,
                       multiple = TRUE,
                       options = list(maxItems = 6),
                       width = "100%"
                     )
-                  ),
+                  )
                 ),
                 gov_row(
                   column(
@@ -99,11 +87,10 @@ dashboard_panel <- function() {
                     width = 9,
                     selectizeInput(
                       inputId = "selectCharValue",
-                      label = "Characteristic value (max: 8)",
+                      label = "Characteristic value",
                       choices = "All graduates",
                       selected = "All graduates",
                       multiple = TRUE,
-                      options = list(maxItems = 8),
                       width = "100%"
                     )
                   )
@@ -227,14 +214,33 @@ dashboard_panel <- function() {
               value = "datatable",
               "Data Table",
               br(),
-              column(
-                width = 6,
-                br(),
-                download_button(
-                  outputId = "downloadData",
-                  button_label = "Download selected data",
-                  file_type = "CSV",
-                  file_size = "less than 10 MB"
+              fluidRow(
+                column(
+                  width = 4,
+                  shinyGovstyle::download_button(
+                    outputId = "downloadData",
+                    button_label = "Download selected data",
+                    file_type = "CSV",
+                    file_size = "less than 10 MB"
+                  )
+                ),
+                column(
+                  width = 4,
+                  download_button(
+                    outputId = "downloadAllProviders",
+                    button_label = "Download for all providers",
+                    file_type = "CSV",
+                    file_size = "less than 10 MB"
+                  )
+                ),
+                column(
+                  width = 4,
+                  download_button(
+                    outputId = "downloadAllSubjects",
+                    button_label = "Download for all subjects",
+                    file_type = "CSV",
+                    file_size = "less than 10 MB"
+                  )
                 )
               ),
               column(
