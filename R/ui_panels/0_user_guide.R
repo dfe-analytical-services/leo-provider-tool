@@ -28,30 +28,29 @@ homepage_panel <- function() {
                 tags$div(
                   h3(actionLink("headlineLink", "Headline Figures")),
                   p("The headline figures presents summary figures, namely the median earnings, and all of the outcomes proportions.
-                    You can filter by Tax Year, Years after graduation, and provider/total"),
+                    You can filter by Tax Year, Years after graduation, and a specific provider or an overall total (country/region/type of provider)."),
                   h3(actionLink("dashboardLink", "Explore the data")),
                   p(
-                    "The 'Explore the data' page contains the main plots of interest. You can filter by",
+                    "The 'Explore the data' page contains the main plots of interest. You can filter by:",
                     tags$ul(
                       tags$li("Tax year"),
                       tags$li("Years after graduation"),
-                      tags$li("Provider country (England, Scotland, Wales)"),
-                      tags$li("Provider or aggregation"),
-                      tags$li("Subject studied (CAH2)")
+                      tags$li("Providers and overall totals (totals by country/region of provider, or type of provider. Select up to six)"),
+                      tags$li("Subject studied (CAH2 subject level, select up to six)")
                     ),
-                    "You can choose any combination and amount of these filters, to compare between cohorts.
-                    You can additionally filter by a single graduate characteristic, namely",
+                    "You can choose any combination of these filters, to compare between cohorts.
+                    You can additionally filter by a single graduate characteristic:",
                     tags$ul(
                       tags$li("Sex"),
                       tags$li("Ethnicity"),
-                      tags$li("POLAR4 Quintile"),
-                      tags$li("Prior Attainment")
+                      tags$li("Income Deprivation Affecting Children Index (IDACI) quintile"),
+                      tags$li("GCSE prior attainment quintile")
                     ),
-                    "choosing any combination of characteristic values. The 'Explore the data' page has 3 subsections, which alter the presentation of the data"
+                    "You can choose to select all or any combination of values for your chosen characteristic. The 'Explore the data' page has 3 subsections, which alter the presentation of the data."
                   ),
                   h4(actionLink("outcomeLink", "Outcomes")),
                   p(
-                    "Outcomes presents the proportion of graduates in each filter combination that achieved a specific outcome. The outcomes measured are",
+                    "Outcomes presents the proportion of graduates in each filter combination that achieved a specific outcome. The outcomes measured are:",
                     tags$ul(
                       tags$li("No sustained destination"),
                       tags$li("Sustained employment only"),
@@ -60,7 +59,7 @@ homepage_panel <- function() {
                       tags$li("Further study with or without sustained employment"),
                       tags$li("Further study only")
                     ),
-                    "see ", a("the methodology of the underlying publication", href = "https://explore-education-statistics.service.gov.uk/methodology/graduate-outcomes-leo-provider-level-data-methodology#content-section-2-content-1"),
+                    "See ", a("the methodology of the underlying publication", href = "https://explore-education-statistics.service.gov.uk/find-statistics/leo-graduate-and-postgraduate-outcomes"),
                     "for a full definition of each of these outcomes."
                   ),
                   h4(actionLink("earningsLink", "Earnings")),
@@ -73,7 +72,15 @@ homepage_panel <- function() {
                     from that HE institution is the same as that nationally. This can be toggled on or off with a checkbox.
                     Note that adjusted earnings have been only been computed for individual providers, and not for any aggregations."),
                   h4(actionLink("datatableLink", "Data Table")),
-                  p("Data Table presents the data in a table, for direct browsing. It also provides a download button, which downloads the data corresponding to the selected filters for further analysis.")
+                  p(
+                    "Data Table presents the data in a table, for direct browsing. It also provides four download buttons, which can be used to download datasets for further analysis. You can download:",
+                    tags$ul(
+                      tags$li("the data for the selected filters only"),
+                      tags$li("for the selected filters but for all providers"),
+                      tags$li("for the selected filters but for all subjects"),
+                      tags$li("for the selected filters for all providers and all subjects")
+                    )
+                  )
                 ),
                 br()
               )

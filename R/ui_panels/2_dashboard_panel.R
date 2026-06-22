@@ -121,7 +121,6 @@ dashboard_panel <- function() {
           tabsetPanel(
             id = "dashboardPanels",
             tabPanel(
-
               # Outcomes Tab ----------------------------------------------------------------------------------------------------
               value = "outcomes",
               "Outcomes",
@@ -209,14 +208,13 @@ dashboard_panel <- function() {
               )
             ),
             tabPanel(
-
               # Data table --------------------------------------------------------------------------------------------------------
               value = "datatable",
               "Data Table",
               br(),
               fluidRow(
                 column(
-                  width = 4,
+                  width = 3,
                   shinyGovstyle::download_button(
                     outputId = "downloadData",
                     button_label = "Download selected data",
@@ -225,7 +223,7 @@ dashboard_panel <- function() {
                   )
                 ),
                 column(
-                  width = 4,
+                  width = 3,
                   download_button(
                     outputId = "downloadAllProviders",
                     button_label = "Download for all providers",
@@ -234,10 +232,19 @@ dashboard_panel <- function() {
                   )
                 ),
                 column(
-                  width = 4,
+                  width = 3,
                   download_button(
                     outputId = "downloadAllSubjects",
                     button_label = "Download for all subjects",
+                    file_type = "CSV",
+                    file_size = "less than 10 MB"
+                  )
+                ),
+                column(
+                  width = 3,
+                  download_button(
+                    outputId = "downloadAllProvidersAllSubjects",
+                    button_label = "Download for all providers and all subjects",
                     file_type = "CSV",
                     file_size = "less than 10 MB"
                   )

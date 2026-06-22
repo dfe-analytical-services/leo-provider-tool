@@ -91,7 +91,7 @@ ui <- function(input, output, session) {
       paste0(
         "This Dashboard is a new service that we are developing.
         If you have any feedback or suggestions for improvements, please submit them using our ",
-        external_link(href = feedback_url, link_text = "feedback form", add_warning = TRUE)
+        shinyGovstyle::external_link(href = feedback_url, link_text = "feedback form", add_warning = TRUE)
       )
     ),
     shiny::navlistPanel(

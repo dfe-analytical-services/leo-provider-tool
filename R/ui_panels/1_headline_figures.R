@@ -22,7 +22,7 @@ valuebox_panel <- function() {
               inputId = "headlineTaxYear",
               label = "Tax year",
               choices = choicesTaxYear,
-              selected = "2022/2023",
+              selected = default_tax_year,
               width = "100%",
             )
           ),
