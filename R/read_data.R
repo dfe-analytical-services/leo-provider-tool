@@ -56,7 +56,7 @@ get_var_units <- function(vars, ...) {
 read_meta_data <- function() {
   message("Reading in meta-data")
   # metadata_path <- "data/metadata.csv"
-  metadata_path <- "//vmt1pr-dhfs01/Working/EDUDEST-WKG-HE-FS/LEO Publication Production/25 - Preparations for publication 2026/Provider dashboard/metadata_20260619_2.csv"
+  metadata_path <- "//vmt1pr-dhfs01/Working/EDUDEST-WKG-HE-FS/LEO Publication Production/25 - Preparations for publication 2026/Provider dashboard/metadata_20260623.csv"
   read.csv(metadata_path, encoding = "UTF-8")
 }
 
@@ -82,7 +82,7 @@ read_provider_data <- function(con) {
   message("Loading underlying data")
   # parquet_data <- read_parquet("data/provider_data.parquet")
   parquet_data <- read_parquet(
-    "//vmt1pr-dhfs01/Working/EDUDEST-WKG-HE-FS/LEO Publication Production/25 - Preparations for publication 2026/Provider dashboard/provider_data_20260616.parquet"
+    "//vmt1pr-dhfs01/Working/EDUDEST-WKG-HE-FS/LEO Publication Production/25 - Preparations for publication 2026/Provider dashboard/provider_data_20260623.parquet"
   )
 
   # 3. Copy the data frame into the SQLite database
