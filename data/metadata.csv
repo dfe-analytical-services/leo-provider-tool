@@ -1,24 +1,24 @@
 ,filter_name,filter_value,filter_grouping_label,provider_country_name
-1,tax_year,2015/2016,NA,NA
-2,tax_year,2016/2017,NA,NA
-3,tax_year,2017/2018,NA,NA
-4,tax_year,2018/2019,NA,NA
-5,tax_year,2019/2020,NA,NA
-6,tax_year,2020/2021,NA,NA
-7,tax_year,2021/2022,NA,NA
-8,tax_year,2022/2023,NA,NA
-9,academic_year,2009/2010,NA,NA
-10,academic_year,2010/2011,NA,NA
-11,academic_year,2011/2012,NA,NA
-12,academic_year,2012/2013,NA,NA
-13,academic_year,2013/2014,NA,NA
-14,academic_year,2014/2015,NA,NA
-15,academic_year,2015/2016,NA,NA
-16,academic_year,2016/2017,NA,NA
-17,academic_year,2017/2018,NA,NA
-18,academic_year,2018/2019,NA,NA
-19,academic_year,2019/2020,NA,NA
-20,academic_year,2020/2021,NA,NA
+1,tax_year,2016/2017,NA,NA
+2,tax_year,2017/2018,NA,NA
+3,tax_year,2018/2019,NA,NA
+4,tax_year,2019/2020,NA,NA
+5,tax_year,2020/2021,NA,NA
+6,tax_year,2021/2022,NA,NA
+7,tax_year,2022/2023,NA,NA
+8,tax_year,2023/2024,NA,NA
+9,academic_year,2010/2011,NA,NA
+10,academic_year,2011/2012,NA,NA
+11,academic_year,2012/2013,NA,NA
+12,academic_year,2013/2014,NA,NA
+13,academic_year,2014/2015,NA,NA
+14,academic_year,2015/2016,NA,NA
+15,academic_year,2016/2017,NA,NA
+16,academic_year,2017/2018,NA,NA
+17,academic_year,2018/2019,NA,NA
+18,academic_year,2019/2020,NA,NA
+19,academic_year,2020/2021,NA,NA
+20,academic_year,2021/2022,NA,NA
 21,YAG,1,NA,NA
 22,YAG,3,NA,NA
 23,YAG,5,NA,NA
@@ -37,31 +37,31 @@
 36,provider_region_name,Total,NA,NA
 37,provider_region_name,West Midlands,NA,NA
 38,provider_region_name,Yorkshire and The Humber,NA,NA
-39,provider_type,HEI,NA,NA
+39,provider_type,AP,NA,NA
 40,provider_type,FEC,NA,NA
-41,provider_type,AP,NA,NA
+41,provider_type,HEI,NA,NA
 42,provider_name,AAP Education Limited,AP,England
-43,provider_name,ACM Guildford Limited,AP,England
-44,provider_name,AECC University College,HEI,England
-45,provider_name,Abertay University,HEI,Scotland
-46,provider_name,Aberystwyth University,HEI,Wales
-47,provider_name,Abingdon and Witney College,FEC,England
-48,provider_name,Academy of Live and Recorded Arts (ALRA),AP,England
-49,provider_name,Access To Music Limited,AP,England
-50,provider_name,Accrington and Rossendale College,FEC,England
+43,provider_name,Abertay University,HEI,Scotland
+44,provider_name,Aberystwyth University,HEI,Wales
+45,provider_name,Abingdon and Witney College,FEC,England
+46,provider_name,Academy of Live and Recorded Arts (ALRA),AP,England
+47,provider_name,Academy of Live Technology Ltd,AP,England
+48,provider_name,Access To Music Limited,AP,England
+49,provider_name,Accrington and Rossendale College,FEC,England
+50,provider_name,ACM Guildford Limited,AP,England
 51,provider_name,Activate Learning,FEC,England
-52,provider_name,All Nations Christian College Limited,AP,England
-53,provider_name,Anglia Ruskin University,HEI,England
-54,provider_name,Architectural Association (Incorporated),AP,England
-55,provider_name,Arden University Limited,AP,England
-56,provider_name,Arts University Bournemouth,HEI,England
-57,provider_name,Arts University Plymouth,HEI,England
-58,provider_name,Askham Bryan College,FEC,England
-59,provider_name,Assemblies of God Incorporated,AP,England
-60,provider_name,Aston University,HEI,England
-61,provider_name,Aylesbury College,FEC,England
-62,provider_name,BIMM Limited,AP,England
-63,provider_name,BPP University Limited,HEI,England
+52,provider_name,AECC University College,HEI,England
+53,provider_name,All Nations Christian College Limited,AP,England
+54,provider_name,Amity Global Education Ltd,AP,England
+55,provider_name,Anglia Ruskin University,HEI,England
+56,provider_name,Architectural Association (Incorporated),AP,England
+57,provider_name,Arden University Limited,HEI,England
+58,provider_name,Arts University Bournemouth,HEI,England
+59,provider_name,Arts University Plymouth,HEI,England
+60,provider_name,Askham Bryan College,FEC,England
+61,provider_name,Assemblies of God Incorporated,AP,England
+62,provider_name,Aston University,HEI,England
+63,provider_name,Aylesbury College,FEC,England
 64,provider_name,Ballet West,AP,Scotland
 65,provider_name,Bangor University,HEI,Wales
 66,provider_name,Barking and Dagenham College,FEC,England
@@ -71,74 +71,74 @@
 70,provider_name,Bath College,FEC,England
 71,provider_name,Bath Spa University,HEI,England
 72,provider_name,Bedford College,FEC,England
-73,provider_name,Birkbeck College,HEI,England
-74,provider_name,Birmingham City University,HEI,England
-75,provider_name,Birmingham Metropolitan College,FEC,England
-76,provider_name,Birmingham Newman University,HEI,England
-77,provider_name,Bishop Auckland College,FEC,England
-78,provider_name,Bishop Burton College,FEC,England
-79,provider_name,Bishop Grosseteste University,HEI,England
-80,provider_name,Blackburn College,FEC,England
-81,provider_name,Blackpool and The Fylde College,FEC,England
-82,provider_name,Bloomsbury Institute Limited,AP,England
-83,provider_name,Bolton College,FEC,England
-84,provider_name,Boston College,FEC,England
-85,provider_name,Bournemouth University,HEI,England
+73,provider_name,BIMM Limited,AP,England
+74,provider_name,Birkbeck College,HEI,England
+75,provider_name,Birmingham City University,HEI,England
+76,provider_name,Birmingham Metropolitan College,FEC,England
+77,provider_name,Birmingham Newman University,HEI,England
+78,provider_name,Bishop Auckland College,FEC,England
+79,provider_name,Bishop Burton College,FEC,England
+80,provider_name,Bishop Grosseteste University,HEI,England
+81,provider_name,Blackburn College,FEC,England
+82,provider_name,Blackpool and The Fylde College,FEC,England
+83,provider_name,Bloomsbury Institute Limited,AP,England
+84,provider_name,Bolton College,FEC,England
+85,provider_name,Boston College,FEC,England
 86,provider_name,Bournemouth and Poole College,FEC,England
-87,provider_name,Bradford College,FEC,England
-88,provider_name,Bridgwater and Taunton College,FEC,England
-89,provider_name,Bristol Baptist College,AP,England
-90,provider_name,Brockenhurst College,FEC,England
-91,provider_name,Brooklands College,FEC,England
-92,provider_name,Brunel University London,HEI,England
-93,provider_name,Buckinghamshire College Group,FEC,England
-94,provider_name,Buckinghamshire New University,HEI,England
-95,provider_name,Burnley College,FEC,England
-96,provider_name,Burton and South Derbyshire College,FEC,England
-97,provider_name,Bury College,FEC,England
-98,provider_name,Calderdale College,FEC,England
-99,provider_name,Cambridge Arts and Sciences Limited,AP,England
-100,provider_name,Canterbury Christ Church University,HEI,England
-101,provider_name,Canterbury College,FEC,England
-102,provider_name,Capital City College Group,FEC,England
-103,provider_name,Cardiff Metropolitan University,HEI,Wales
-104,provider_name,Cardiff University,HEI,Wales
-105,provider_name,Cardinal Newman Catholic Sixth Form College,FEC,England
-106,provider_name,Carshalton College,FEC,England
-107,provider_name,Central Bedfordshire College,FEC,England
-108,provider_name,Central Film School London Ltd,AP,England
-109,provider_name,Central Sussex College,FEC,England
-110,provider_name,Cheshire College South and West,FEC,England
-111,provider_name,Chesterfield College,FEC,England
-112,provider_name,Chichester College Group,FEC,England
-113,provider_name,Christ the Redeemer College,AP,England
-114,provider_name,City College Brighton and Hove,FEC,England
-115,provider_name,City College Norwich,FEC,England
-116,provider_name,City College Plymouth,FEC,England
-117,provider_name,"City St George's, University of London",HEI,England
-118,provider_name,City and Guilds of London Art School Limited,AP,England
-119,provider_name,City and Islington College,FEC,England
-120,provider_name,City of Bristol College,FEC,England
-121,provider_name,City of London College,AP,England
-122,provider_name,City of Portsmouth College,FEC,England
-123,provider_name,City of Sunderland College,FEC,England
-124,provider_name,Cliff College,AP,England
-125,provider_name,Colchester Institute,FEC,England
-126,provider_name,Conservatoire For Dance and Drama,HEI,England
-127,provider_name,Cornwall College,FEC,England
-128,provider_name,Court Theatre Training Company Ltd,AP,England
-129,provider_name,Courtauld Institute of Art,HEI,England
-130,provider_name,Coventry College,FEC,England
-131,provider_name,Coventry University,HEI,England
-132,provider_name,Craven College,FEC,England
-133,provider_name,Croydon College,FEC,England
-134,provider_name,DN Colleges Group,FEC,England
-135,provider_name,De Montfort University,HEI,England
-136,provider_name,Dearne Valley College,FEC,England
-137,provider_name,Derby College Group (DCG),FEC,England
-138,provider_name,Doncaster College,FEC,England
-139,provider_name,EKC Group,FEC,England
-140,provider_name,EThames Graduate School Limited,AP,England
+87,provider_name,Bournemouth University,HEI,England
+88,provider_name,BPP University Limited,HEI,England
+89,provider_name,Bradford College,FEC,England
+90,provider_name,Bridgwater and Taunton College,FEC,England
+91,provider_name,Bristol Baptist College,AP,England
+92,provider_name,Brockenhurst College,FEC,England
+93,provider_name,Brooklands College,FEC,England
+94,provider_name,Brunel University London,HEI,England
+95,provider_name,Buckinghamshire College Group,FEC,England
+96,provider_name,Buckinghamshire New University,HEI,England
+97,provider_name,Burnley College,FEC,England
+98,provider_name,Burton and South Derbyshire College,FEC,England
+99,provider_name,Bury College,FEC,England
+100,provider_name,Calderdale College,FEC,England
+101,provider_name,Cambridge Arts and Sciences Limited,AP,England
+102,provider_name,Canterbury Christ Church University,HEI,England
+103,provider_name,Canterbury College,FEC,England
+104,provider_name,Capital City College Group,FEC,England
+105,provider_name,Cardiff Metropolitan University,HEI,Wales
+106,provider_name,Cardiff University,HEI,Wales
+107,provider_name,Cardinal Newman Catholic Sixth Form College,FEC,England
+108,provider_name,Carshalton College,FEC,England
+109,provider_name,Central Bedfordshire College,FEC,England
+110,provider_name,Central Film School London Ltd,AP,England
+111,provider_name,Central Sussex College,FEC,England
+112,provider_name,Cheshire College South and West,FEC,England
+113,provider_name,Chesterfield College,FEC,England
+114,provider_name,Chichester College Group,FEC,England
+115,provider_name,Christ the Redeemer College,AP,England
+116,provider_name,City and Guilds of London Art School Limited,AP,England
+117,provider_name,City and Islington College,FEC,England
+118,provider_name,City College Brighton and Hove,FEC,England
+119,provider_name,City College Norwich,FEC,England
+120,provider_name,City College Plymouth,FEC,England
+121,provider_name,City of Bristol College,FEC,England
+122,provider_name,City of London College,AP,England
+123,provider_name,City of Portsmouth College,FEC,England
+124,provider_name,City of Sunderland College,FEC,England
+125,provider_name,"City St George's, University of London",HEI,England
+126,provider_name,Cliff College,AP,England
+127,provider_name,Colchester Institute,FEC,England
+128,provider_name,Conservatoire For Dance and Drama,HEI,England
+129,provider_name,Cornwall College,FEC,England
+130,provider_name,Court Theatre Training Company Ltd,AP,England
+131,provider_name,Courtauld Institute of Art,HEI,England
+132,provider_name,Coventry College,FEC,England
+133,provider_name,Coventry University,HEI,England
+134,provider_name,Craven College,FEC,England
+135,provider_name,Croydon College,FEC,England
+136,provider_name,De Montfort University,HEI,England
+137,provider_name,Dearne Valley College,FEC,England
+138,provider_name,Derby College Group (DCG),FEC,England
+139,provider_name,DN Colleges Group,FEC,England
+140,provider_name,Doncaster College,FEC,England
 141,provider_name,East Riding College,FEC,England
 142,provider_name,East Surrey College,FEC,England
 143,provider_name,East Sussex College Group,FEC,England
@@ -146,460 +146,462 @@
 145,provider_name,Edge Hill University,HEI,England
 146,provider_name,Edinburgh College of Art,HEI,Scotland
 147,provider_name,Edinburgh Napier University,HEI,Scotland
-148,provider_name,Elim Foursquare Gospel Alliance,AP,England
-149,provider_name,Exeter College,FEC,England
-150,provider_name,Fairfield School of Business Ltd,AP,England
-151,provider_name,Falmouth University,HEI,England
-152,provider_name,Farnborough College of Technology,FEC,England
-153,provider_name,Formission Ltd,AP,England
-154,provider_name,Furness College,FEC,England
-155,provider_name,Futureworks Training Limited,AP,England
-156,provider_name,GSM London Limited,AP,England
-157,provider_name,Gateshead College,FEC,England
-158,provider_name,Glasgow Caledonian University,HEI,Scotland
-159,provider_name,Glasgow School of Art,HEI,Scotland
-160,provider_name,Gloucestershire College ,FEC,England
-161,provider_name,Glyndwr University,HEI,Wales
-162,provider_name,Goldsmiths' College,HEI,England
-163,provider_name,Greater Brighton Metropolitan College,FEC,England
-164,provider_name,Grwp Llandrillo Menai,HEI,Wales
-165,provider_name,Guildford College of Further and Higher Education,FEC,England
-166,provider_name,Guildhall School of Music and Drama,HEI,England
-167,provider_name,Hadlow College,FEC,England
-168,provider_name,Harlow College,FEC,England
-169,provider_name,Harper Adams University,HEI,England
-170,provider_name,Harper Adams University College,HEI,England
-171,provider_name,Hartpury College,FEC,England
-172,provider_name,Hartpury University,HEI,England
-173,provider_name,Havant and South Downs College,FEC,England
-174,provider_name,Havering College of Further and Higher Education,FEC,England
-175,provider_name,Heart of Worcestershire College,FEC,England
-176,provider_name,Heart of Yorkshire Education Group,FEC,England
-177,provider_name,Hereford College of Arts,FEC,England
-178,provider_name,Heriot-Watt University,HEI,Scotland
-179,provider_name,Heythrop College,HEI,England
-180,provider_name,Holborn College Limited,AP,England
-181,provider_name,Holy Cross College,FEC,England
-182,provider_name,Hugh Baird College,FEC,England
-183,provider_name,Hull College,FEC,England
-184,provider_name,Hult International Business School Ltd,AP,England
-185,provider_name,ICMP Management Limited,AP,England
-186,provider_name,"Imperial College of Science, Technology and Medicine",HEI,England
-187,provider_name,Institute of Education,HEI,England
-188,provider_name,Irshad Trust ,AP,England
-189,provider_name,Istituto Marangoni Limited,AP,England
-190,provider_name,KLC Limited,AP,England
-191,provider_name,KPMG LLP,FEC,England
-192,provider_name,Kaplan Open Learning (Essex) Limited,AP,England
-193,provider_name,Kendal College,FEC,England
-194,provider_name,Kensington College of Business,AP,England
-195,provider_name,Kensington and Chelsea College,FEC,England
-196,provider_name,King's College London,HEI,England
-197,provider_name,Kingston Maurward College,FEC,England
-198,provider_name,Kingston University,HEI,England
-199,provider_name,Kirklees College,FEC,England
-200,provider_name,Kogan Academy of Dramatic Arts,AP,England
-201,provider_name,LAMDA Limited,HEI,England
-202,provider_name,LCCM AU UK Limited,AP,England
-203,provider_name,LTE Group,FEC,England
-204,provider_name,Lakes College West Cumbria,FEC,England
-205,provider_name,Learning Curve Group Limited,FEC,England
-206,provider_name,Leeds Arts University,HEI,England
-207,provider_name,Leeds Beckett University,HEI,England
-208,provider_name,Leeds College of Music,HEI,England
-209,provider_name,Leeds Conservatoire,HEI,England
-210,provider_name,Leeds Trinity University,HEI,England
-211,provider_name,Leicester College,FEC,England
-212,provider_name,Lincoln College,FEC,England
-213,provider_name,Liverpool Hope University,HEI,England
-214,provider_name,Liverpool John Moores University,HEI,England
-215,provider_name,London Centre of Contemporary Music,AP,England
-216,provider_name,London College of Creative Media Limited,AP,England
-217,provider_name,London Metropolitan University,HEI,England
-218,provider_name,London School of Business and Finance (UK) Limited,AP,England
-219,provider_name,London School of Management Education Limited,AP,England
-220,provider_name,London School of Science and Technology Limited,AP,England
-221,provider_name,London School of Theology,AP,England
-222,provider_name,London South Bank University,HEI,England
-223,provider_name,London Studio Centre Limited,AP,England
-224,provider_name,Loughborough College,FEC,England
-225,provider_name,Loughborough University,HEI,England
-226,provider_name,Luminate Education Group,FEC,England
-227,provider_name,Luther King House Educational Trust,AP,England
-228,provider_name,Macclesfield College,FEC,England
-229,provider_name,Manchester Metropolitan University,HEI,England
-230,provider_name,Matrix College of Counselling and Psychotherapy Ltd,AP,England
-231,provider_name,Met Film School Limited,AP,England
-232,provider_name,Mid-Kent College,FEC,England
-233,provider_name,Middlesbrough College,FEC,England
-234,provider_name,Middlesex University,HEI,England
-235,provider_name,Millennium Performing Arts Ltd,AP,England
-236,provider_name,Mont Rose College of Management and Sciences Limited,AP,England
-237,provider_name,Moorlands College,AP,England
-238,provider_name,Morley College Limited,FEC,England
-239,provider_name,Moulton College,FEC,England
-240,provider_name,Mountview Academy of Theatre Arts Limited,AP,England
-241,provider_name,Myerscough College,FEC,England
-242,provider_name,NCG,FEC,England
-243,provider_name,Nazarene Theological College,AP,England
-244,provider_name,Nelson College London Limited,AP,England
-245,provider_name,Nelson and Colne College,FEC,England
-246,provider_name,New City College,FEC,England
-247,provider_name,New College Durham,FEC,England
-248,provider_name,New College Stamford,FEC,England
-249,provider_name,New College Swindon,FEC,England
-250,provider_name,Newbold College,AP,England
-251,provider_name,Newbury College,FEC,England
-252,provider_name,Newham College of Further Education,FEC,England
-253,provider_name,Norland College Limited,AP,England
-254,provider_name,North East Surrey College of Technology (NESCOT),FEC,England
-255,provider_name,North Kent College,FEC,England
-256,provider_name,North Shropshire College,FEC,England
-257,provider_name,North Warwickshire and South Leicestershire College,FEC,England
-258,provider_name,Northeastern University - London,AP,England
-259,provider_name,Northern College of Acupuncture,AP,England
-260,provider_name,Northumberland College,FEC,England
-261,provider_name,Norwich University of The Arts,HEI,England
-262,provider_name,Nottingham College,FEC,England
-263,provider_name,Nottingham Trent University,HEI,England
-264,provider_name,Oak Hill College,AP,England
-265,provider_name,Open College of The Arts,AP,England
-266,provider_name,Oxford Brookes University,HEI,England
-267,provider_name,Oxford Business College,AP,England
-268,provider_name,PETROC,FEC,England
-269,provider_name,Peter Symonds College,FEC,England
-270,provider_name,Plumpton College,FEC,England
-271,provider_name,Point Blank Limited,AP,England
-272,provider_name,Preston College,FEC,England
-273,provider_name,QA Limited,FEC,England
-274,provider_name,"Queen Margaret University, Edinburgh",HEI,Scotland
-275,provider_name,Queen Mary University of London,HEI,England
-276,provider_name,RNN Group,FEC,England
-277,provider_name,RTC Education Ltd,AP,England
-278,provider_name,Ravensbourne University London,HEI,England
-279,provider_name,Realise Learning and Employment Limited,FEC,England
-280,provider_name,Reaseheath College,FEC,England
-281,provider_name,Regent's University London,AP,England
-282,provider_name,Regent's University London Limited,AP,England
-283,provider_name,Richmond American University London,AP,England
-284,provider_name,Riverside College Halton,FEC,England
-285,provider_name,Robert Gordon University,HEI,Scotland
-286,provider_name,Roehampton University,HEI,England
-287,provider_name,Rose Bruford College of Theatre and Performance,HEI,England
-288,provider_name,Royal Academy of Dance,AP,England
-289,provider_name,Royal Academy of Dramatic Art,HEI,England
-290,provider_name,Royal College of Music,HEI,England
-291,provider_name,Royal Conservatoire of Scotland,HEI,Scotland
-292,provider_name,Royal Holloway and Bedford New College,HEI,England
-293,provider_name,Royal Northern College of Music,HEI,England
-294,provider_name,Ruskin College,FEC,England
-295,provider_name,SAE Education Limited,AP,England
-296,provider_name,SRUC,HEI,Scotland
-297,provider_name,Salford City College,FEC,England
-298,provider_name,Selby College,FEC,England
-299,provider_name,Serco Holdings Limited,FEC,England
-300,provider_name,Serco Limited,FEC,England
-301,provider_name,Sheffield Hallam University,HEI,England
-302,provider_name,Shrewsbury College of Arts and Technology,FEC,England
-303,provider_name,Siemens Public Limited Company,FEC,England
-304,provider_name,Skillnet Limited,FEC,England
-305,provider_name,Slough Borough Council,AP,England
-306,provider_name,Solent University,HEI,England
-307,provider_name,Solihull College and University Centre,FEC,England
-308,provider_name,Somerset College,FEC,England
-309,provider_name,South Devon College,FEC,England
-310,provider_name,South Essex College of Further and Higher Education,FEC,England
-311,provider_name,South Gloucestershire and Stroud College,FEC,England
-312,provider_name,South Hampshire College Group,FEC,England
-313,provider_name,South Staffordshire College,FEC,England
-314,provider_name,South Thames College,FEC,England
-315,provider_name,South Thames Colleges Group,FEC,England
-316,provider_name,South and City College Birmingham,FEC,England
-317,provider_name,Southampton City College,FEC,England
-318,provider_name,Southport Education Group,FEC,England
-319,provider_name,Sparsholt College,FEC,England
-320,provider_name,Spurgeon's College,AP,England
-321,provider_name,St Helens College,FEC,England
-322,provider_name,"St Mary's University, Twickenham",HEI,England
-323,provider_name,St Mellitus College Trust,AP,England
-324,provider_name,St. George's Hospital Medical School,HEI,England
-325,provider_name,Stafford College,FEC,England
-326,provider_name,Staffordshire University,HEI,England
-327,provider_name,Stephenson College,FEC,England
-328,provider_name,Stockport College,FEC,England
-329,provider_name,Stoke On Trent College,FEC,England
-330,provider_name,Strode College,FEC,England
-331,provider_name,Sussex Downs College,FEC,England
-332,provider_name,Swansea Metropolitan University,HEI,Wales
-333,provider_name,Swansea University,HEI,Wales
-334,provider_name,Swindon College,FEC,England
-335,provider_name,TDR Training Limited,FEC,England
-336,provider_name,TEC Partnership,FEC,England
-337,provider_name,Tameside College,FEC,England
-338,provider_name,Tech Music Schools,AP,England
-339,provider_name,Teesside University,HEI,England
-340,provider_name,The Academy of Contemporary Music,AP,England
-341,provider_name,The Arts Educational Schools,AP,England
-342,provider_name,The Berkshire College of Agriculture (BCA),FEC,England
-343,provider_name,The Cambridge Theological Federation,AP,England
-344,provider_name,The Chicken Shed Theatre Trust,AP,England
-345,provider_name,The City of Liverpool College,FEC,England
-346,provider_name,"The College of Haringey, Enfield and North-East London",FEC,England
-347,provider_name,The College of Integrated Chinese Medicine,AP,England
-348,provider_name,The College of St. Mark and St. John Foundation,HEI,England
-349,provider_name,The Film Education Training Trust Limited,AP,England
-350,provider_name,The International College of Oriental Medicine (UK) Limited,AP,England
-351,provider_name,The Liverpool Institute For Performing Arts,HEI,England
-352,provider_name,The London Institute of Banking and Finance,AP,England
-353,provider_name,The London School of Economics and Political Science,HEI,England
-354,provider_name,The Markfield Institute of Higher Education,AP,England
-355,provider_name,The Metanoia Institute,AP,England
-356,provider_name,The Northern School of Art,FEC,England
-357,provider_name,The Oldham College,FEC,England
-358,provider_name,The Open University,HEI,England
-359,provider_name,The Queen's Foundation For Ecumenical Theological Education,AP,England
-360,provider_name,The Royal Academy of Music,HEI,England
-361,provider_name,The Royal Agricultural University,HEI,England
-362,provider_name,The Royal Central School of Speech and Drama,HEI,England
-363,provider_name,The Royal Veterinary College,HEI,England
-364,provider_name,The SMB Group,FEC,England
-365,provider_name,The School of Oriental and African Studies,HEI,England
-366,provider_name,The School of Pharmacy,HEI,England
-367,provider_name,The Sheffield College,FEC,England
-368,provider_name,The Sherwood Institute,AP,England
-369,provider_name,The Sherwood Psychotherapy Training Institute Limited,AP,England
-370,provider_name,The Trafford College Group,FEC,England
-371,provider_name,The University College of Osteopathy,HEI,England
-372,provider_name,The University of Aberdeen,HEI,Scotland
-373,provider_name,The University of Bath,HEI,England
-374,provider_name,The University of Birmingham,HEI,England
-375,provider_name,The University of Bolton,HEI,England
-376,provider_name,The University of Bradford,HEI,England
-377,provider_name,The University of Buckingham,HEI,England
-378,provider_name,The University of Cambridge,HEI,England
-379,provider_name,The University of Chichester,HEI,England
-380,provider_name,The University of Cumbria,HEI,England
-381,provider_name,The University of Dundee,HEI,Scotland
-382,provider_name,The University of East Anglia,HEI,England
-383,provider_name,The University of Edinburgh,HEI,Scotland
-384,provider_name,The University of Essex,HEI,England
-385,provider_name,The University of Glasgow,HEI,Scotland
-386,provider_name,The University of Huddersfield,HEI,England
-387,provider_name,The University of Hull,HEI,England
-388,provider_name,The University of Kent,HEI,England
-389,provider_name,The University of Lancaster,HEI,England
-390,provider_name,The University of Law Limited,HEI,England
-391,provider_name,The University of Leeds,HEI,England
-392,provider_name,The University of Leicester,HEI,England
-393,provider_name,The University of Liverpool,HEI,England
-394,provider_name,The University of Manchester,HEI,England
-395,provider_name,The University of Northampton,HEI,England
-396,provider_name,The University of Nottingham,HEI,England
-397,provider_name,The University of Oxford,HEI,England
-398,provider_name,The University of Reading,HEI,England
-399,provider_name,The University of Salford,HEI,England
-400,provider_name,The University of Sheffield,HEI,England
-401,provider_name,The University of St. Andrews,HEI,Scotland
-402,provider_name,The University of Stirling,HEI,Scotland
-403,provider_name,The University of Strathclyde,HEI,Scotland
-404,provider_name,The University of Surrey,HEI,England
-405,provider_name,The University of The West of Scotland,HEI,Scotland
-406,provider_name,"The University of Wales, Newport",HEI,Wales
-407,provider_name,The University of Warwick,HEI,England
-408,provider_name,The University of West London,HEI,England
-409,provider_name,The University of Westminster,HEI,England
-410,provider_name,The Windsor Forest Colleges Group,FEC,England
-411,provider_name,Total,NA,NA
-412,provider_name,Trinity College (Bristol) Limited,AP,England
-413,provider_name,Trinity Laban Conservatoire of Music and Dance,HEI,England
-414,provider_name,Trinity University College,HEI,Wales
-415,provider_name,Truro and Penwith College,FEC,England
-416,provider_name,Tyne Coast College,FEC,England
-417,provider_name,UCK Limited,AP,England
-418,provider_name,UK College of Business and Computing Ltd,AP,England
-419,provider_name,United Colleges Group,FEC,England
-420,provider_name,University Centre Peterborough,AP,England
-421,provider_name,University Centre Quayside Limited,HEI,England
-422,provider_name,University College Birmingham,HEI,England
-423,provider_name,University College London,HEI,England
-424,provider_name,University College of Estate Management,HEI,England
-425,provider_name,University For The Creative Arts,HEI,England
-426,provider_name,University of Bedfordshire,HEI,England
-427,provider_name,University of Brighton,HEI,England
-428,provider_name,University of Bristol,HEI,England
-429,provider_name,University of Central Lancashire,HEI,England
-430,provider_name,University of Chester,HEI,England
-431,provider_name,University of Derby,HEI,England
-432,provider_name,University of Durham,HEI,England
-433,provider_name,University of East London,HEI,England
-434,provider_name,University of Exeter,HEI,England
-435,provider_name,University of Gloucestershire,HEI,England
-436,provider_name,University of Greenwich,HEI,England
-437,provider_name,University of Hertfordshire,HEI,England
-438,provider_name,University of Keele,HEI,England
-439,provider_name,University of Lincoln,HEI,England
-440,provider_name,University of London,HEI,England
-441,provider_name,University of Newcastle Upon Tyne,HEI,England
-442,provider_name,University of Northumbria At Newcastle,HEI,England
-443,provider_name,University of Plymouth,HEI,England
-444,provider_name,University of Portsmouth,HEI,England
-445,provider_name,University of South Wales,HEI,Wales
-446,provider_name,University of Southampton,HEI,England
-447,provider_name,University of St Mark and St John,HEI,England
-448,provider_name,University of Suffolk,HEI,England
-449,provider_name,University of Sunderland,HEI,England
-450,provider_name,University of Sussex,HEI,England
-451,provider_name,"University of The Arts, London",HEI,England
-452,provider_name,University of The Highlands and Islands,HEI,Scotland
-453,provider_name,"University of The West of England, Bristol",HEI,England
-454,provider_name,University of Wales Trinity Saint David,HEI,Wales
-455,provider_name,University of Winchester,HEI,England
-456,provider_name,University of Wolverhampton,HEI,England
-457,provider_name,University of Worcester,HEI,England
-458,provider_name,University of York,HEI,England
-459,provider_name,Vh Doctors Limited,FEC,England
-460,provider_name,Walsall College,FEC,England
-461,provider_name,Warwickshire College,FEC,England
-462,provider_name,Waverley Abbey College,AP,England
-463,provider_name,West Kent and Ashford College,FEC,England
-464,provider_name,West London College,AP,England
-465,provider_name,West Nottinghamshire College,FEC,England
-466,provider_name,West Suffolk College,FEC,England
-467,provider_name,West Thames College,FEC,England
-468,provider_name,Weston College of Further and Higher Education,FEC,England
-469,provider_name,Weymouth College,FEC,England
-470,provider_name,Wigan and Leigh College,FEC,England
-471,provider_name,Wiltshire College and University Centre,FEC,England
-472,provider_name,Wirral Metropolitan College,FEC,England
-473,provider_name,Worcester College of Technology,FEC,England
-474,provider_name,Writtle University College,HEI,England
-475,provider_name,Yeovil College,FEC,England
-476,provider_name,York College,FEC,England
-477,provider_name,York St John University,HEI,England
-478,current_region_name,Total,NA,NA
-479,cah2_subject_name,Total,NA,NA
-480,cah2_subject_name,"Agriculture, food and related studies",NA,NA
-481,cah2_subject_name,Allied health,NA,NA
-482,cah2_subject_name,"Architecture, building and planning",NA,NA
-483,cah2_subject_name,Biosciences,NA,NA
-484,cah2_subject_name,Business and management,NA,NA
-485,cah2_subject_name,Celtic studies,NA,NA
-486,cah2_subject_name,Chemistry,NA,NA
-487,cah2_subject_name,Combined and general studies,NA,NA
-488,cah2_subject_name,Computing,NA,NA
-489,cah2_subject_name,Creative arts and design,NA,NA
-490,cah2_subject_name,Economics,NA,NA
-491,cah2_subject_name,Education and teaching,NA,NA
-492,cah2_subject_name,Engineering,NA,NA
-493,cah2_subject_name,English studies,NA,NA
-494,cah2_subject_name,"General, applied and forensic sciences",NA,NA
-495,cah2_subject_name,"Geography, earth and environmental studies",NA,NA
-496,cah2_subject_name,Health and social care,NA,NA
-497,cah2_subject_name,History and archaeology,NA,NA
-498,cah2_subject_name,Languages and area studies,NA,NA
-499,cah2_subject_name,Law,NA,NA
-500,cah2_subject_name,Materials and technology,NA,NA
-501,cah2_subject_name,Mathematical sciences,NA,NA
-502,cah2_subject_name,"Media, journalism and communications",NA,NA
-503,cah2_subject_name,Medical sciences,NA,NA
-504,cah2_subject_name,Medicine and dentistry,NA,NA
-505,cah2_subject_name,Nursing and midwifery,NA,NA
-506,cah2_subject_name,Performing arts,NA,NA
-507,cah2_subject_name,"Pharmacology, toxicology and pharmacy",NA,NA
-508,cah2_subject_name,Philosophy and religious studies,NA,NA
-509,cah2_subject_name,Physics and astronomy,NA,NA
-510,cah2_subject_name,Politics,NA,NA
-511,cah2_subject_name,Psychology,NA,NA
-512,cah2_subject_name,"Sociology, social policy and anthropology",NA,NA
-513,cah2_subject_name,Sport and exercise sciences,NA,NA
-514,cah2_subject_name,Veterinary sciences,NA,NA
-515,sex,F,NA,NA
-516,sex,F+M,NA,NA
-517,sex,M,NA,NA
-518,ethnicity,African,NA,NA
-519,ethnicity,All Asian / Asian British,NA,NA
-520,ethnicity,All Black / African / Caribbean / Black British,NA,NA
-521,ethnicity,All mixed / multiple ethnic groups,NA,NA
-522,ethnicity,All other ethnic groups,NA,NA
-523,ethnicity,All white,NA,NA
-524,ethnicity,Any other Asian background,NA,NA
-525,ethnicity,Any other Black / African / Caribbean background,NA,NA
-526,ethnicity,Any other Mixed / Multiple ethnic background,NA,NA
-527,ethnicity,Any other ethnic group,NA,NA
-528,ethnicity,Arab,NA,NA
-529,ethnicity,Bangladeshi,NA,NA
-530,ethnicity,Caribbean,NA,NA
-531,ethnicity,Chinese,NA,NA
-532,ethnicity,Indian,NA,NA
-533,ethnicity,Pakistani,NA,NA
-534,ethnicity,Total,NA,NA
-535,ethnicity,Unknown,NA,NA
-536,ethnicity,White and Asian,NA,NA
-537,ethnicity,White and Black African,NA,NA
-538,ethnicity,White and Black Caribbean,NA,NA
-539,prior_attainment_code,Not known,NA,NA
-540,prior_attainment_code,prior_attainment_1,NA,NA
-541,prior_attainment_code,prior_attainment_2,NA,NA
-542,prior_attainment_code,prior_attainment_3,NA,NA
-543,prior_attainment_code,prior_attainment_4,NA,NA
-544,prior_attainment_code,prior_attainment_5,NA,NA
-545,prior_attainment_code,prior_attainment_6,NA,NA
-546,prior_attainment_code,prior_attainment_7,NA,NA
-547,prior_attainment_code,prior_attainment_8,NA,NA
-548,prior_attainment_code,prior_attainment_9,NA,NA
-549,POLAR4,Not known,NA,NA
-550,POLAR4,POLAR4_1,NA,NA
-551,POLAR4,POLAR4_2,NA,NA
-552,POLAR4,POLAR4_3,NA,NA
-553,POLAR4,POLAR4_4,NA,NA
-554,POLAR4,POLAR4_5,NA,NA
-555,characteristic_type,All graduates,NA,NA
-556,characteristic_type,sex,NA,NA
-557,characteristic_type,ethnicity,NA,NA
-558,characteristic_type,POLAR4,NA,NA
-559,characteristic_type,prior_attainment_code,NA,NA
-560,characteristic_value,All graduates,NA,NA
-561,characteristic_value,F,NA,NA
-562,characteristic_value,M,NA,NA
-563,characteristic_value,POLAR4_1,NA,NA
-564,characteristic_value,POLAR4_2,NA,NA
-565,characteristic_value,POLAR4_3,NA,NA
-566,characteristic_value,POLAR4_4,NA,NA
-567,characteristic_value,POLAR4_5,NA,NA
-568,characteristic_value,Not known,NA,NA
-569,characteristic_value,prior_attainment_1,NA,NA
-570,characteristic_value,prior_attainment_2,NA,NA
-571,characteristic_value,prior_attainment_3,NA,NA
-572,characteristic_value,prior_attainment_4,NA,NA
-573,characteristic_value,prior_attainment_5,NA,NA
-574,characteristic_value,prior_attainment_6,NA,NA
-575,characteristic_value,prior_attainment_7,NA,NA
-576,characteristic_value,prior_attainment_8,NA,NA
-577,characteristic_value,prior_attainment_9,NA,NA
-578,characteristic_value,All white,NA,NA
-579,characteristic_value,All Asian / Asian British,NA,NA
-580,characteristic_value,All Black / African / Caribbean / Black British,NA,NA
-581,characteristic_value,All mixed / multiple ethnic groups,NA,NA
-582,characteristic_value,All other ethnic groups,NA,NA
-583,characteristic_value,Unknown,NA,NA
-584,characteristic_value,Bangladeshi,NA,NA
-585,characteristic_value,Chinese,NA,NA
-586,characteristic_value,Indian,NA,NA
-587,characteristic_value,Pakistani,NA,NA
-588,characteristic_value,Any other Asian background,NA,NA
-589,characteristic_value,African,NA,NA
-590,characteristic_value,Caribbean,NA,NA
-591,characteristic_value,Any other Black / African / Caribbean background,NA,NA
-592,characteristic_value,White and Asian,NA,NA
-593,characteristic_value,White and Black African,NA,NA
-594,characteristic_value,White and Black Caribbean,NA,NA
-595,characteristic_value,Any other Mixed / Multiple ethnic background,NA,NA
-596,characteristic_value,Arab,NA,NA
-597,characteristic_value,Any other ethnic group,NA,NA
-598,indicator,activity_not_captured,NA,NA
-599,indicator,no_sust_dest,NA,NA
-600,indicator,sust_emp_only,NA,NA
-601,indicator,sust_emp_with_or_without_fs,NA,NA
-602,indicator,sust_emp_fs_or_both,NA,NA
-603,indicator,fs_with_or_without_sust_emp,NA,NA
-604,indicator,fs_only,NA,NA
+148,provider_name,EKC Group,FEC,England
+149,provider_name,Elim Foursquare Gospel Alliance,AP,England
+150,provider_name,EThames Graduate School Limited,AP,England
+151,provider_name,Exeter College,FEC,England
+152,provider_name,Fairfield School of Business Ltd,AP,England
+153,provider_name,Falmouth University,HEI,England
+154,provider_name,Farnborough College of Technology,FEC,England
+155,provider_name,Formission Ltd,AP,England
+156,provider_name,Furness College,FEC,England
+157,provider_name,Futureworks Training Limited,AP,England
+158,provider_name,Gateshead College,FEC,England
+159,provider_name,Glasgow Caledonian University,HEI,Scotland
+160,provider_name,Glasgow School of Art,HEI,Scotland
+161,provider_name,Gloucestershire College ,FEC,England
+162,provider_name,Glyndwr University,HEI,Wales
+163,provider_name,Goldsmiths' College,HEI,England
+164,provider_name,Greater Brighton Metropolitan College,FEC,England
+165,provider_name,Grwp Llandrillo Menai,HEI,Wales
+166,provider_name,GSM London Limited,AP,England
+167,provider_name,Guildford College of Further and Higher Education,FEC,England
+168,provider_name,Guildhall School of Music and Drama,HEI,England
+169,provider_name,Hadlow College,FEC,England
+170,provider_name,Harlow College,FEC,England
+171,provider_name,Harper Adams University,HEI,England
+172,provider_name,Harper Adams University College,HEI,England
+173,provider_name,Hartlepool College of Further Education,FEC,England
+174,provider_name,Hartpury College,FEC,England
+175,provider_name,Hartpury University,HEI,England
+176,provider_name,Havant and South Downs College,FEC,England
+177,provider_name,Havering College of Further and Higher Education,FEC,England
+178,provider_name,Heart of Worcestershire College,FEC,England
+179,provider_name,Heart of Yorkshire Education Group,FEC,England
+180,provider_name,Hereford College of Arts,FEC,England
+181,provider_name,Heriot-Watt University,HEI,Scotland
+182,provider_name,Heythrop College,HEI,England
+183,provider_name,Holborn College Limited,AP,England
+184,provider_name,Holy Cross College,FEC,England
+185,provider_name,Hugh Baird College,FEC,England
+186,provider_name,Hull College,FEC,England
+187,provider_name,Hult International Business School Ltd,AP,England
+188,provider_name,ICMP Management Limited,AP,England
+189,provider_name,Icon College of Technology and Management Ltd ,AP,England
+190,provider_name,"Imperial College of Science, Technology and Medicine",HEI,England
+191,provider_name,Institute of Education,HEI,England
+192,provider_name,Irshad Trust ,AP,England
+193,provider_name,Istituto Marangoni Limited,AP,England
+194,provider_name,Kaplan Open Learning (Essex) Limited,AP,England
+195,provider_name,Kendal College,FEC,England
+196,provider_name,Kensington and Chelsea College,FEC,England
+197,provider_name,Kensington College of Business,AP,England
+198,provider_name,King's College London,HEI,England
+199,provider_name,Kingston Maurward College,FEC,England
+200,provider_name,Kingston University,HEI,England
+201,provider_name,Kirklees College,FEC,England
+202,provider_name,KLC Limited,AP,England
+203,provider_name,Kogan Academy of Dramatic Arts,AP,England
+204,provider_name,KPMG LLP,FEC,England
+205,provider_name,Lakes College West Cumbria,FEC,England
+206,provider_name,LAMDA Limited,HEI,England
+207,provider_name,LCCM AU UK Limited,AP,England
+208,provider_name,Learning Curve Group Limited,FEC,England
+209,provider_name,Leeds Arts University,HEI,England
+210,provider_name,Leeds Beckett University,HEI,England
+211,provider_name,Leeds College of Music,HEI,England
+212,provider_name,Leeds Conservatoire,HEI,England
+213,provider_name,Leeds Trinity University,HEI,England
+214,provider_name,Leicester College,FEC,England
+215,provider_name,Lincoln College,FEC,England
+216,provider_name,Liverpool Hope University,HEI,England
+217,provider_name,Liverpool John Moores University,HEI,England
+218,provider_name,London Centre of Contemporary Music,AP,England
+219,provider_name,London College of Creative Media Limited,AP,England
+220,provider_name,London Metropolitan University,HEI,England
+221,provider_name,London School of Business and Finance (UK) Limited,AP,England
+222,provider_name,London School of Management Education Limited,AP,England
+223,provider_name,London School of Science and Technology Limited,AP,England
+224,provider_name,London School of Theology,AP,England
+225,provider_name,London South Bank University,HEI,England
+226,provider_name,London Studio Centre Limited,AP,England
+227,provider_name,Loughborough College,FEC,England
+228,provider_name,Loughborough University,HEI,England
+229,provider_name,LTE Group,FEC,England
+230,provider_name,Luminate Education Group,FEC,England
+231,provider_name,Luther King House Educational Trust,AP,England
+232,provider_name,Macclesfield College,FEC,England
+233,provider_name,Manchester Metropolitan University,HEI,England
+234,provider_name,Matrix College of Counselling and Psychotherapy Ltd,AP,England
+235,provider_name,Met Film School Limited,AP,England
+236,provider_name,Mid-Kent College,FEC,England
+237,provider_name,Middlesbrough College,FEC,England
+238,provider_name,Middlesex University,HEI,England
+239,provider_name,Millennium Performing Arts Ltd,AP,England
+240,provider_name,Mla College Ltd,AP,England
+241,provider_name,Mont Rose College of Management and Sciences Limited,AP,England
+242,provider_name,Moorlands College,AP,England
+243,provider_name,Morley College Limited,FEC,England
+244,provider_name,Moulton College,FEC,England
+245,provider_name,Mountview Academy of Theatre Arts Limited,AP,England
+246,provider_name,Myerscough College,FEC,England
+247,provider_name,Nazarene Theological College,AP,England
+248,provider_name,NCG,FEC,England
+249,provider_name,Nelson and Colne College,FEC,England
+250,provider_name,Nelson College London Limited,AP,England
+251,provider_name,New City College,FEC,England
+252,provider_name,New College Durham,FEC,England
+253,provider_name,New College Stamford,FEC,England
+254,provider_name,New College Swindon,FEC,England
+255,provider_name,Newbold College,AP,England
+256,provider_name,Newbury College,FEC,England
+257,provider_name,Newham College of Further Education,FEC,England
+258,provider_name,Norland College Limited,AP,England
+259,provider_name,North East Surrey College of Technology (NESCOT),FEC,England
+260,provider_name,North Kent College,FEC,England
+261,provider_name,North Shropshire College,FEC,England
+262,provider_name,North Warwickshire and South Leicestershire College,FEC,England
+263,provider_name,Northeastern University - London,AP,England
+264,provider_name,Northern College of Acupuncture,AP,England
+265,provider_name,Northumberland College,FEC,England
+266,provider_name,Norwich University of The Arts,HEI,England
+267,provider_name,Nottingham College,FEC,England
+268,provider_name,Nottingham Trent University,HEI,England
+269,provider_name,Oak Hill College,AP,England
+270,provider_name,Open College of The Arts,AP,England
+271,provider_name,Oxford Brookes University,HEI,England
+272,provider_name,Oxford Business College,AP,England
+273,provider_name,Paris Dauphine International ,AP,England
+274,provider_name,Peter Symonds College,FEC,England
+275,provider_name,PETROC,FEC,England
+276,provider_name,Plumpton College,FEC,England
+277,provider_name,Point Blank Limited,AP,England
+278,provider_name,Preston College,FEC,England
+279,provider_name,QA Limited,FEC,England
+280,provider_name,"Queen Margaret University, Edinburgh",HEI,Scotland
+281,provider_name,Queen Mary University of London,HEI,England
+282,provider_name,Ravensbourne University London,HEI,England
+283,provider_name,Realise Learning and Employment Limited,FEC,England
+284,provider_name,Reaseheath College,FEC,England
+285,provider_name,Regent's University London,AP,England
+286,provider_name,Regent's University London Limited,AP,England
+287,provider_name,Richmond American University London,AP,England
+288,provider_name,Riverside College Halton,FEC,England
+289,provider_name,RNN Group,FEC,England
+290,provider_name,Robert Gordon University,HEI,Scotland
+291,provider_name,Roehampton University,HEI,England
+292,provider_name,Rose Bruford College of Theatre and Performance,HEI,England
+293,provider_name,Royal Academy of Dance,AP,England
+294,provider_name,Royal Academy of Dramatic Art,HEI,England
+295,provider_name,Royal College of Music,HEI,England
+296,provider_name,Royal Conservatoire of Scotland,HEI,Scotland
+297,provider_name,Royal Holloway and Bedford New College,HEI,England
+298,provider_name,Royal Northern College of Music,HEI,England
+299,provider_name,RTC Education Ltd,AP,England
+300,provider_name,Ruskin College,FEC,England
+301,provider_name,SAE Education Limited,AP,England
+302,provider_name,Salford City College,FEC,England
+303,provider_name,Selby College,FEC,England
+304,provider_name,Serco Holdings Limited,FEC,England
+305,provider_name,Serco Limited,FEC,England
+306,provider_name,Sheffield Hallam University,HEI,England
+307,provider_name,Shrewsbury College of Arts and Technology,FEC,England
+308,provider_name,Siemens Public Limited Company,FEC,England
+309,provider_name,Skillnet Limited,FEC,England
+310,provider_name,Slough Borough Council,AP,England
+311,provider_name,Solent University,HEI,England
+312,provider_name,Solihull College and University Centre,FEC,England
+313,provider_name,Somerset College,FEC,England
+314,provider_name,South and City College Birmingham,FEC,England
+315,provider_name,South Devon College,FEC,England
+316,provider_name,South Essex College of Further and Higher Education,FEC,England
+317,provider_name,South Gloucestershire and Stroud College,FEC,England
+318,provider_name,South Hampshire College Group,FEC,England
+319,provider_name,South Staffordshire College,FEC,England
+320,provider_name,South Thames College,FEC,England
+321,provider_name,South Thames Colleges Group,FEC,England
+322,provider_name,Southampton City College,FEC,England
+323,provider_name,Southport Education Group,FEC,England
+324,provider_name,Sparsholt College,FEC,England
+325,provider_name,Spurgeon's College,AP,England
+326,provider_name,SRUC,HEI,Scotland
+327,provider_name,St Helens College,FEC,England
+328,provider_name,St Mary's College,FEC,England
+329,provider_name,"St Mary's University, Twickenham",HEI,England
+330,provider_name,St Mellitus College Trust,AP,England
+331,provider_name,St. George's Hospital Medical School,HEI,England
+332,provider_name,Stafford College,FEC,England
+333,provider_name,Staffordshire University,HEI,England
+334,provider_name,Stephenson College,FEC,England
+335,provider_name,Stockport College,FEC,England
+336,provider_name,Stoke On Trent College,FEC,England
+337,provider_name,Strode College,FEC,England
+338,provider_name,Sunderland Engineering Training Association Limited,FEC,England
+339,provider_name,Sussex Downs College,FEC,England
+340,provider_name,Swansea Metropolitan University,HEI,Wales
+341,provider_name,Swansea University,HEI,Wales
+342,provider_name,Swindon College,FEC,England
+343,provider_name,Tameside College,FEC,England
+344,provider_name,TDR Training Limited,FEC,England
+345,provider_name,TEC Partnership,FEC,England
+346,provider_name,Tech Music Schools,AP,England
+347,provider_name,Teesside University,HEI,England
+348,provider_name,The Academy of Contemporary Music,AP,England
+349,provider_name,The Arts Educational Schools,AP,England
+350,provider_name,The Ashridge (Bonar Law Memorial) Trust ,AP,England
+351,provider_name,The Berkshire College of Agriculture (BCA),FEC,England
+352,provider_name,The Cambridge Theological Federation,AP,England
+353,provider_name,The Chicken Shed Theatre Trust,AP,England
+354,provider_name,The City of Liverpool College,FEC,England
+355,provider_name,"The College of Haringey, Enfield and North-East London",FEC,England
+356,provider_name,The College of Health Ltd,AP,England
+357,provider_name,The College of Integrated Chinese Medicine,AP,England
+358,provider_name,The College of St. Mark and St. John Foundation,HEI,England
+359,provider_name,The Edward James Foundation Limited,AP,England
+360,provider_name,The Film Education Training Trust Limited,AP,England
+361,provider_name,The International College of Oriental Medicine (UK) Limited,AP,England
+362,provider_name,The Liverpool Institute For Performing Arts,HEI,England
+363,provider_name,The London Institute of Banking and Finance,AP,England
+364,provider_name,The London School of Economics and Political Science,HEI,England
+365,provider_name,The Markfield Institute of Higher Education,AP,England
+366,provider_name,The Metanoia Institute,AP,England
+367,provider_name,The Northern School of Art,FEC,England
+368,provider_name,The Oldham College,FEC,England
+369,provider_name,The Open University,HEI,England
+370,provider_name,The Queen's Foundation For Ecumenical Theological Education,AP,England
+371,provider_name,The Royal Academy of Music,HEI,England
+372,provider_name,The Royal Agricultural University,HEI,England
+373,provider_name,The Royal Central School of Speech and Drama,HEI,England
+374,provider_name,The Royal Veterinary College,HEI,England
+375,provider_name,The School of Oriental and African Studies,HEI,England
+376,provider_name,The School of Pharmacy,HEI,England
+377,provider_name,The Sheffield College,FEC,England
+378,provider_name,The Sherwood Institute,AP,England
+379,provider_name,The Sherwood Psychotherapy Training Institute Limited,AP,England
+380,provider_name,The SMB Group,FEC,England
+381,provider_name,The Trafford College Group,FEC,England
+382,provider_name,The University College of Osteopathy,HEI,England
+383,provider_name,The University of Aberdeen,HEI,Scotland
+384,provider_name,The University of Bath,HEI,England
+385,provider_name,The University of Birmingham,HEI,England
+386,provider_name,The University of Bolton,HEI,England
+387,provider_name,The University of Bradford,HEI,England
+388,provider_name,The University of Buckingham,HEI,England
+389,provider_name,The University of Cambridge,HEI,England
+390,provider_name,The University of Chichester,HEI,England
+391,provider_name,The University of Cumbria,HEI,England
+392,provider_name,The University of Dundee,HEI,Scotland
+393,provider_name,The University of East Anglia,HEI,England
+394,provider_name,The University of Edinburgh,HEI,Scotland
+395,provider_name,The University of Essex,HEI,England
+396,provider_name,The University of Glasgow,HEI,Scotland
+397,provider_name,The University of Huddersfield,HEI,England
+398,provider_name,The University of Hull,HEI,England
+399,provider_name,The University of Kent,HEI,England
+400,provider_name,The University of Lancaster,HEI,England
+401,provider_name,The University of Law Limited,HEI,England
+402,provider_name,The University of Leeds,HEI,England
+403,provider_name,The University of Leicester,HEI,England
+404,provider_name,The University of Liverpool,HEI,England
+405,provider_name,The University of Manchester,HEI,England
+406,provider_name,The University of Northampton,HEI,England
+407,provider_name,The University of Nottingham,HEI,England
+408,provider_name,The University of Oxford,HEI,England
+409,provider_name,The University of Reading,HEI,England
+410,provider_name,The University of Salford,HEI,England
+411,provider_name,The University of Sheffield,HEI,England
+412,provider_name,The University of St. Andrews,HEI,Scotland
+413,provider_name,The University of Stirling,HEI,Scotland
+414,provider_name,The University of Strathclyde,HEI,Scotland
+415,provider_name,The University of Surrey,HEI,England
+416,provider_name,The University of The West of Scotland,HEI,Scotland
+417,provider_name,"The University of Wales, Newport",HEI,Wales
+418,provider_name,The University of Warwick,HEI,England
+419,provider_name,The University of West London,HEI,England
+420,provider_name,The University of Westminster,HEI,England
+421,provider_name,The Windsor Forest Colleges Group,FEC,England
+422,provider_name,Total,NA,NA
+423,provider_name,Trinity College (Bristol) Limited,AP,England
+424,provider_name,Trinity Laban Conservatoire of Music and Dance,HEI,England
+425,provider_name,Truro and Penwith College,FEC,England
+426,provider_name,Tyne Coast College,FEC,England
+427,provider_name,UCK Limited,AP,England
+428,provider_name,UK College of Business and Computing Ltd,AP,England
+429,provider_name,United Colleges Group,FEC,England
+430,provider_name,University Centre Peterborough,AP,England
+431,provider_name,University Centre Quayside Limited,HEI,England
+432,provider_name,University College Birmingham,HEI,England
+433,provider_name,University College London,HEI,England
+434,provider_name,University College of Estate Management,HEI,England
+435,provider_name,University For The Creative Arts,HEI,England
+436,provider_name,University of Bedfordshire,HEI,England
+437,provider_name,University of Brighton,HEI,England
+438,provider_name,University of Bristol,HEI,England
+439,provider_name,University of Central Lancashire,HEI,England
+440,provider_name,University of Chester,HEI,England
+441,provider_name,University of Derby,HEI,England
+442,provider_name,University of Durham,HEI,England
+443,provider_name,University of East London,HEI,England
+444,provider_name,University of Exeter,HEI,England
+445,provider_name,University of Gloucestershire,HEI,England
+446,provider_name,University of Greenwich,HEI,England
+447,provider_name,University of Hertfordshire,HEI,England
+448,provider_name,University of Keele,HEI,England
+449,provider_name,University of Lincoln,HEI,England
+450,provider_name,University of London,HEI,England
+451,provider_name,University of Newcastle Upon Tyne,HEI,England
+452,provider_name,University of Northumbria At Newcastle,HEI,England
+453,provider_name,University of Plymouth,HEI,England
+454,provider_name,University of Portsmouth,HEI,England
+455,provider_name,University of South Wales,HEI,Wales
+456,provider_name,University of Southampton,HEI,England
+457,provider_name,University of St Mark and St John,HEI,England
+458,provider_name,University of Suffolk,HEI,England
+459,provider_name,University of Sunderland,HEI,England
+460,provider_name,University of Sussex,HEI,England
+461,provider_name,"University of The Arts, London",HEI,England
+462,provider_name,University of The Highlands and Islands,HEI,Scotland
+463,provider_name,"University of The West of England, Bristol",HEI,England
+464,provider_name,University of Wales Trinity Saint David,HEI,Wales
+465,provider_name,University of Winchester,HEI,England
+466,provider_name,University of Wolverhampton,HEI,England
+467,provider_name,University of Worcester,HEI,England
+468,provider_name,University of York,HEI,England
+469,provider_name,Vh Doctors Limited,FEC,England
+470,provider_name,Walsall College,FEC,England
+471,provider_name,Warwickshire College,FEC,England
+472,provider_name,Waverley Abbey College,AP,England
+473,provider_name,West Kent and Ashford College,FEC,England
+474,provider_name,West London College,AP,England
+475,provider_name,West Nottinghamshire College,FEC,England
+476,provider_name,West Suffolk College,FEC,England
+477,provider_name,West Thames College,FEC,England
+478,provider_name,Weston College of Further and Higher Education,FEC,England
+479,provider_name,Weymouth College,FEC,England
+480,provider_name,Wigan and Leigh College,FEC,England
+481,provider_name,Wiltshire College and University Centre,FEC,England
+482,provider_name,Wirral Metropolitan College,FEC,England
+483,provider_name,Worcester College of Technology,FEC,England
+484,provider_name,Writtle University College,HEI,England
+485,provider_name,Yeovil College,FEC,England
+486,provider_name,York College,FEC,England
+487,provider_name,York St John University,HEI,England
+488,current_region_name,Total,NA,NA
+489,cah2_subject_name,Total,NA,NA
+490,cah2_subject_name,"Agriculture, food and related studies",NA,NA
+491,cah2_subject_name,Allied health,NA,NA
+492,cah2_subject_name,"Architecture, building and planning",NA,NA
+493,cah2_subject_name,Biosciences,NA,NA
+494,cah2_subject_name,Business and management,NA,NA
+495,cah2_subject_name,Celtic studies,NA,NA
+496,cah2_subject_name,Chemistry,NA,NA
+497,cah2_subject_name,Combined and general studies,NA,NA
+498,cah2_subject_name,Computing,NA,NA
+499,cah2_subject_name,Creative arts and design,NA,NA
+500,cah2_subject_name,Economics,NA,NA
+501,cah2_subject_name,Education and teaching,NA,NA
+502,cah2_subject_name,Engineering,NA,NA
+503,cah2_subject_name,English studies,NA,NA
+504,cah2_subject_name,"General, applied and forensic sciences",NA,NA
+505,cah2_subject_name,"Geography, earth and environmental studies",NA,NA
+506,cah2_subject_name,Health and social care,NA,NA
+507,cah2_subject_name,History and archaeology,NA,NA
+508,cah2_subject_name,Languages and area studies,NA,NA
+509,cah2_subject_name,Law,NA,NA
+510,cah2_subject_name,Materials and technology,NA,NA
+511,cah2_subject_name,Mathematical sciences,NA,NA
+512,cah2_subject_name,"Media, journalism and communications",NA,NA
+513,cah2_subject_name,Medical sciences,NA,NA
+514,cah2_subject_name,Medicine and dentistry,NA,NA
+515,cah2_subject_name,Nursing and midwifery,NA,NA
+516,cah2_subject_name,Performing arts,NA,NA
+517,cah2_subject_name,"Pharmacology, toxicology and pharmacy",NA,NA
+518,cah2_subject_name,Philosophy and religious studies,NA,NA
+519,cah2_subject_name,Physics and astronomy,NA,NA
+520,cah2_subject_name,Politics,NA,NA
+521,cah2_subject_name,Psychology,NA,NA
+522,cah2_subject_name,"Sociology, social policy and anthropology",NA,NA
+523,cah2_subject_name,Sport and exercise sciences,NA,NA
+524,cah2_subject_name,Veterinary sciences,NA,NA
+525,sex,F,NA,NA
+526,sex,F+M,NA,NA
+527,sex,M,NA,NA
+528,ethnicity,African,NA,NA
+529,ethnicity,All Asian / Asian British,NA,NA
+530,ethnicity,All Black / African / Caribbean / Black British,NA,NA
+531,ethnicity,All mixed / multiple ethnic groups,NA,NA
+532,ethnicity,All other ethnic groups,NA,NA
+533,ethnicity,All white,NA,NA
+534,ethnicity,Any other Asian background,NA,NA
+535,ethnicity,Any other Black / African / Caribbean background,NA,NA
+536,ethnicity,Any other ethnic group,NA,NA
+537,ethnicity,Any other Mixed / Multiple ethnic background,NA,NA
+538,ethnicity,Arab,NA,NA
+539,ethnicity,Bangladeshi,NA,NA
+540,ethnicity,Caribbean,NA,NA
+541,ethnicity,Chinese,NA,NA
+542,ethnicity,Indian,NA,NA
+543,ethnicity,Pakistani,NA,NA
+544,ethnicity,Total,NA,NA
+545,ethnicity,Unknown,NA,NA
+546,ethnicity,White and Asian,NA,NA
+547,ethnicity,White and Black African,NA,NA
+548,ethnicity,White and Black Caribbean,NA,NA
+549,prior_attainment_code,Not known,NA,NA
+550,prior_attainment_code,prior_attainment_1,NA,NA
+551,prior_attainment_code,prior_attainment_2,NA,NA
+552,prior_attainment_code,prior_attainment_3,NA,NA
+553,prior_attainment_code,prior_attainment_4,NA,NA
+554,prior_attainment_code,prior_attainment_5,NA,NA
+555,IDACI,IDACI_1,NA,NA
+556,IDACI,IDACI_2,NA,NA
+557,IDACI,IDACI_3,NA,NA
+558,IDACI,IDACI_4,NA,NA
+559,IDACI,IDACI_5,NA,NA
+560,IDACI,Not known,NA,NA
+561,characteristic_type,All graduates,NA,NA
+562,characteristic_type,sex,NA,NA
+563,characteristic_type,ethnicity,NA,NA
+564,characteristic_type,IDACI,NA,NA
+565,characteristic_type,prior_attainment_code,NA,NA
+566,characteristic_value,All graduates,NA,NA
+567,characteristic_value,F,NA,NA
+568,characteristic_value,M,NA,NA
+569,characteristic_value,IDACI_1,NA,NA
+570,characteristic_value,IDACI_2,NA,NA
+571,characteristic_value,IDACI_3,NA,NA
+572,characteristic_value,IDACI_4,NA,NA
+573,characteristic_value,IDACI_5,NA,NA
+574,characteristic_value,Not known,NA,NA
+575,characteristic_value,prior_attainment_1,NA,NA
+576,characteristic_value,prior_attainment_2,NA,NA
+577,characteristic_value,prior_attainment_3,NA,NA
+578,characteristic_value,prior_attainment_4,NA,NA
+579,characteristic_value,prior_attainment_5,NA,NA
+580,characteristic_value,All white,NA,NA
+581,characteristic_value,All Asian / Asian British,NA,NA
+582,characteristic_value,All Black / African / Caribbean / Black British,NA,NA
+583,characteristic_value,All mixed / multiple ethnic groups,NA,NA
+584,characteristic_value,All other ethnic groups,NA,NA
+585,characteristic_value,Unknown,NA,NA
+586,characteristic_value,Bangladeshi,NA,NA
+587,characteristic_value,Chinese,NA,NA
+588,characteristic_value,Indian,NA,NA
+589,characteristic_value,Pakistani,NA,NA
+590,characteristic_value,Any other Asian background,NA,NA
+591,characteristic_value,African,NA,NA
+592,characteristic_value,Caribbean,NA,NA
+593,characteristic_value,Any other Black / African / Caribbean background,NA,NA
+594,characteristic_value,White and Asian,NA,NA
+595,characteristic_value,White and Black African,NA,NA
+596,characteristic_value,White and Black Caribbean,NA,NA
+597,characteristic_value,Any other Mixed / Multiple ethnic background,NA,NA
+598,characteristic_value,Arab,NA,NA
+599,characteristic_value,Any other ethnic group,NA,NA
+600,indicator,activity_not_captured,NA,NA
+601,indicator,no_sust_dest,NA,NA
+602,indicator,sust_emp_only,NA,NA
+603,indicator,sust_emp_with_or_without_fs,NA,NA
+604,indicator,sust_emp_fs_or_both,NA,NA
+605,indicator,fs_with_or_without_sust_emp,NA,NA
+606,indicator,fs_only,NA,NA

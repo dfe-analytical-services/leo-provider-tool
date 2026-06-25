@@ -15,8 +15,8 @@
 
 get_var_lookup <- function() {
   message("Reading in var look-up")
-  # var_lookup <- read.csv("data/var_lookup.csv")
-  var_lookup <- read.csv("//vmt1pr-dhfs01/Working/EDUDEST-WKG-HE-FS/LEO Publication Production/25 - Preparations for publication 2026/Provider dashboard/var_lookup_2026.csv")
+  var_lookup <- read.csv("data/var_lookup.csv")
+
   # put the variable names in the rownames, so we can easily index them
   rownames(var_lookup) <- var_lookup$variable
   select(var_lookup, -variable)
@@ -55,8 +55,8 @@ get_var_units <- function(vars, ...) {
 # Read Metadata ----
 read_meta_data <- function() {
   message("Reading in meta-data")
-  # metadata_path <- "data/metadata.csv"
-  metadata_path <- "//vmt1pr-dhfs01/Working/EDUDEST-WKG-HE-FS/LEO Publication Production/25 - Preparations for publication 2026/Provider dashboard/metadata_20260623.csv"
+  metadata_path <- "data/metadata.csv"
+
   read.csv(metadata_path, encoding = "UTF-8")
 }
 
@@ -80,10 +80,8 @@ read_meta_data <- function() {
 # write_parquet(csv_data, file_path)
 read_provider_data <- function(con) {
   message("Loading underlying data")
-  # parquet_data <- read_parquet("data/provider_data.parquet")
-  parquet_data <- read_parquet(
-    "//vmt1pr-dhfs01/Working/EDUDEST-WKG-HE-FS/LEO Publication Production/25 - Preparations for publication 2026/Provider dashboard/provider_data_20260623.parquet"
-  )
+  parquet_data <- read_parquet("data/provider_data.parquet")
+
 
   # 3. Copy the data frame into the SQLite database
   dbWriteTable(con, "LEO_data", parquet_data)
