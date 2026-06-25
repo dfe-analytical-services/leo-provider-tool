@@ -72,8 +72,6 @@ server <- function(input, output, session) {
   })
 
 
-
-
   # User guide links ------------------------------------------------------------------------------------------------
 
   observeEvent(input$headlineLink, {
@@ -149,7 +147,6 @@ server <- function(input, output, session) {
   # Filtering -------------------------------------------------------------------------------------------------
 
 
-
   ## This function is called on to separate the user-selected 'provider Geography'
   ## in to the corresponding provider_country, provider_region_name and provider_name variables in the underlying data.
 
@@ -197,9 +194,6 @@ server <- function(input, output, session) {
   }
 
 
-
-
-
   generate_colour_choices <- function(data) {
     # This makes it possible to separate filters that are varying (to use in x-axis label) from those that are constant (to use in graph title)
     variable_counts <- data %>%
@@ -214,9 +208,7 @@ server <- function(input, output, session) {
       colnames()
 
 
-
     choices <- intersect(varying, choicesColGrouping)
-
 
 
     names(choices) <- get_var_names(choices, var_lookup)
@@ -227,12 +219,7 @@ server <- function(input, output, session) {
   }
 
 
-
-
   # Apply filters ---------------------------------------------------------------------------------------------------
-
-
-
 
 
   # This will be run anytime the apply filters button is pressed.
@@ -495,11 +482,46 @@ server <- function(input, output, session) {
     data
   })
 
+  ## Apply filters but without filtering by provider or subject -----------------------------------------------------------------
+  # In order to create a 'download for all providers and all subjects' dataset
 
+  all_providers_all_subjects_data_ <- reactive({
+    taxYear <- input$selectTaxYear
+    YAG_ <- input$selectYAG
+    # subject <- input$selectSubject
+    charType <- input$selectCharType
+    charVal <- input$selectCharValue
+    # Include geography here so that all_providers_data will include any aggregations that have been selected, as well as all providers
+    geography <- input$selectProviderGeography
+
+    providerGeographies <- disaggGeog(geography)
+
+    data <- tbl(con, "LEO_data") %>%
+      filter(
+        tax_year %in% taxYear,
+        YAG %in% YAG_,
+        # provider_country_name %in% country,
+        # cah2_subject_name %in% subject,
+        characteristic_type %in% c("All graduates", charType),
+        characteristic_value %in% charVal
+      ) %>%
+      # This filtering includes any selected aggregations and all providers
+      filter(
+        ((provider_country_name %in% providerGeographies$country & provider_name == "Total" & provider_region_name == "Total" & provider_type == "HEI") |
+          (provider_region_name %in% providerGeographies$region & provider_name == "Total") |
+          (provider_type %in% providerGeographies$type & provider_name == "Total" & provider_region_name == "Total" & provider_country_name == "England") |
+          (provider_name != "Total"))
+      ) %>%
+      collect() %>%
+      mutate(
+        YAG = as.character(YAG),
+        characteristic_type = if_else(characteristic_value == "All graduates", "All graduates", characteristic_type)
+      )
+    data
+  })
 
 
   # Plots -----------------------------------------------------------------------------------------------------------
-
 
 
   output$colOutcomes <- snapshotPreprocessOutput(
@@ -707,6 +729,15 @@ server <- function(input, output, session) {
     filename = "LEO_provider_data_all_subjects.csv",
     content = function(file) {
       all_subjects_data_() %>%
+        add_prior_attainment_lookup(var_lookup) %>%
+        write.csv(file, row.names = FALSE)
+    }
+  )
+
+  output$downloadAllProvidersAllSubjects <- downloadHandler(
+    filename = "LEO_provider_data_all_providers_all_subjects.csv",
+    content = function(file) {
+      all_providers_all_subjects_data_() %>%
         add_prior_attainment_lookup(var_lookup) %>%
         write.csv(file, row.names = FALSE)
     }

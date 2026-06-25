@@ -19,7 +19,6 @@ generate_outcomes_tooltip <- function(varying, combined_varying_filter, indicato
 }
 
 
-
 generate_earnings_tooltip <- function(varying, combined_varying_filter, earnings_list, adjusted, sample_size) {
   tooltips <- character(length(combined_varying_filter))
   combined_varying_filter <- as.character(combined_varying_filter)
@@ -37,11 +36,6 @@ generate_earnings_tooltip <- function(varying, combined_varying_filter, earnings
   }
   return(tooltips)
 }
-
-
-
-
-
 
 
 generate_label_string <- function(label, value, end_str = "") {
@@ -229,7 +223,6 @@ plotOutcomes <- function(outcomes_selected, colourGrouping, indicator) {
 }
 
 
-
 plotEarnings <- function(earnings_selected, columnGrouping, fullWidth, adjust, whiskers) {
   # First reconstitute the provider 'geography' in to a single variable. Also track what type of geography it is, so we know what label to use.
   earnings_selected <- earnings_selected %>%
@@ -264,7 +257,6 @@ plotEarnings <- function(earnings_selected, columnGrouping, fullWidth, adjust, w
   }
 
 
-
   # This makes it possible to separate filters that are varying (to use in x-axis label) from those that are constant (to use in graph title)
   variable_counts <- earnings_selected %>%
     select(tax_year, provider_country_name, provider_geog, provider_geog_type, YAG, cah2_subject_name, characteristic_type, characteristic_value) %>%
@@ -275,7 +267,6 @@ plotEarnings <- function(earnings_selected, columnGrouping, fullWidth, adjust, w
   varying <- variable_counts %>%
     select(where(~ any(. > 1))) %>%
     colnames()
-
 
 
   # The label generation code relies on the provider geog type being directly after the provider geography.

@@ -161,7 +161,6 @@ choicesProviderGeog <- list(
   append(choicesProviderName)
 
 
-
 choicesCharType <- metadata %>%
   filter(filter_name == "characteristic_type") %>%
   pull(filter_value)
@@ -202,7 +201,6 @@ choicesOutcomesIndicator <- metadata %>%
   pull(filter_value)
 
 names(choicesOutcomesIndicator) <- sapply(choicesOutcomesIndicator, get_var_name, var_lookup)
-
 
 
 # Load CSV into an in memory database  ----------------------------------------------------------------------------
@@ -259,7 +257,7 @@ google_analytics_key <- "Z967JJVQQX"
 ## Default Filter combinations -------------------------------------------------------------------------------------
 
 # This will show on first load, and also when filters are reset
-default_tax_year <- "2022/2023"
+default_tax_year <- "2023/2024"
 default_YAG <- 5
 # default_provider_country <- "Total"
 default_provider_geog <- "Total"
