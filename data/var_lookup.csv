@@ -16,16 +16,12 @@ no_sust_dest,No sustained destination,%
 sust_emp_fs_or_both,Sustained employment or further study,%
 activity_not_captured,Activity unknown,%
 provider_geog,Provider/Aggregation,
-earnings_lower,Minimum Earnings,£
 earnings_LQ,Lower Quartile of Earnings,£
 earnings_median,Median Earnings,£
 earnings_UQ,Upper Quartile of Earnings,£
-earnings_upper,Maximum Earnings,£
-earnings_adjusted_lower,Minimum Earnings (Region Adjusted),£
 earnings_adjusted_LQ,Lower Quartile of Earnings (Region Adjusted),£
 earnings_adjusted_median,Median Earnings (Region Adjusted),£
 earnings_adjusted_UQ,Upper Quartile of Earnings (Region Adjusted),£
-earnings_adjusted_upper,Maximum Earnings (Region Adjusted),£
 sex,Sex,
 ethnicity,Ethnicity,
 IDACI,IDACI Quintile,

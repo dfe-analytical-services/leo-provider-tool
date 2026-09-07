@@ -179,18 +179,19 @@ dashboard_panel <- function() {
                   width = "100%"
                 )
               ),
+              # # Commenting out as with min/max earnings removed options for earnings plots Whiskers and FullWidth no longer needed
               column(
                 width = 6,
-                checkboxInput(
-                  inputId = "earningsWhiskers",
-                  label = span("Show boxplot whiskers", tipify(icon("circle-question"), title = "Show the maximum and minimum earnings corresponding to each group")),
-                  value = FALSE
-                ),
-                checkboxInput(
-                  inputId = "earningsFullWidth",
-                  label = span("Show full width of graph", tipify(icon("circle-question"), title = "The maximum earnings does not fit on a reasonable graph scale. This will expand the graph scale to fully show maximum earnings")),
-                  value = FALSE
-                ),
+                #   checkboxInput(
+                #     inputId = "earningsWhiskers",
+                #     label = span("Show boxplot whiskers", tipify(icon("circle-question"), title = "Show the maximum and minimum earnings corresponding to each group")),
+                #     value = FALSE
+                #   ),
+                #   checkboxInput(
+                #     inputId = "earningsFullWidth",
+                #     label = span("Show full width of graph", tipify(icon("circle-question"), title = "The maximum earnings does not fit on a reasonable graph scale. This will expand the graph scale to fully show maximum earnings")),
+                #     value = FALSE
+                #   ),
                 checkboxInput(
                   inputId = "earningsAdjust",
                   label = span("Apply regional earnings adjustment", tipify(icon("circle-question"), title = "For individual providers, weight each provider's graduates so that the distribution of graduates from that HE institution is the same as that nationally")),
