@@ -29,12 +29,16 @@ format_data <- function(data) {
       no_sust_dest,
       activity_not_captured,
       grads_earnings_include,
-      earnings_lower:earnings_upper,
-      earnings_adjusted_lower:earnings_adjusted_upper
+      # earnings_lower:earnings_upper,
+      earnings_LQ:earnings_UQ,
+      # earnings_adjusted_lower:earnings_adjusted_upper
+      earnings_adjusted_LQ:earnings_adjusted_UQ
     ) %>%
     mutate(
-      across(earnings_lower:earnings_upper, format_earnings),
-      across(earnings_adjusted_lower:earnings_adjusted_upper, format_earnings, adjusted = TRUE),
+      # across(earnings_lower:earnings_upper, format_earnings),
+      across(earnings_LQ:earnings_UQ, format_earnings),
+      # across(earnings_adjusted_lower:earnings_adjusted_upper, format_earnings, adjusted = TRUE),
+      across(earnings_adjusted_LQ:earnings_adjusted_UQ, format_earnings, adjusted = TRUE),
       across(sust_emp_with_or_without_fs:activity_not_captured, format_outcome),
       across(c(grads:grads_matched, grads_earnings_include), format_count),
       across(c(characteristic_type, characteristic_value), get_var_names, var_lookup)

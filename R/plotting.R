@@ -222,8 +222,9 @@ plotOutcomes <- function(outcomes_selected, colourGrouping, indicator) {
     coord_flip()
 }
 
-
-plotEarnings <- function(earnings_selected, columnGrouping, fullWidth, adjust, whiskers) {
+# Adjusting now min/max earnings removed, Whiskers and FullWidth options no longer applicable
+# plotEarnings <- function(earnings_selected, columnGrouping, fullWidth, adjust, whiskers) {
+plotEarnings <- function(earnings_selected, columnGrouping, adjust) {
   # First reconstitute the provider 'geography' in to a single variable. Also track what type of geography it is, so we know what label to use.
   earnings_selected <- earnings_selected %>%
     mutate(
@@ -248,11 +249,11 @@ plotEarnings <- function(earnings_selected, columnGrouping, fullWidth, adjust, w
     # We just need to make sure we check the adjust variable whenever we need to
     earnings_selected <- earnings_selected %>%
       mutate(
-        earnings_lower = earnings_adjusted_lower,
+        # earnings_lower = earnings_adjusted_lower,
         earnings_LQ = earnings_adjusted_LQ,
         earnings_median = earnings_adjusted_median,
-        earnings_UQ = earnings_adjusted_UQ,
-        earnings_upper = earnings_adjusted_upper
+        earnings_UQ = earnings_adjusted_UQ # ,
+        # earnings_upper = earnings_adjusted_upper
       )
   }
 
@@ -304,24 +305,25 @@ plotEarnings <- function(earnings_selected, columnGrouping, fullWidth, adjust, w
     rowwise() %>%
     mutate(
       earnings_list = list(c(
-        earnings_lower = earnings_lower,
+        # earnings_lower = earnings_lower,
         earnings_LQ = earnings_LQ,
         earnings_median = earnings_median,
-        earnings_UQ = earnings_UQ,
-        earnings_upper = earnings_upper
+        earnings_UQ = earnings_UQ # ,
+        # earnings_upper = earnings_upper
       ))
     )
 
-  if (!whiskers) {
-    temp_data <- temp_data %>%
-      mutate(
-        earnings_lower = earnings_LQ,
-        earnings_upper = earnings_UQ
-      )
-  }
+  # # Commenting out as with min/max earnings removed options for earnings plots Whiskers and FullWidth no longer needed
+  # if (!whiskers) {
+  #   temp_data <- temp_data %>%
+  #     mutate(
+  #       earnings_lower = earnings_LQ,
+  #       earnings_upper = earnings_UQ
+  #     )
+  # }
 
-
-  earnings_upper_no_na <- na.omit(as.numeric(temp_data$earnings_upper))
+  # # Commenting out as with min/max earnings removed options for earnings plots Whiskers and FullWidth no longer needed
+  # earnings_upper_no_na <- na.omit(as.numeric(temp_data$earnings_upper))
   earnings_UQ_no_na <- na.omit(as.numeric(temp_data$earnings_UQ))
 
   # If fullWidth is not selected:
@@ -329,8 +331,9 @@ plotEarnings <- function(earnings_selected, columnGrouping, fullWidth, adjust, w
   # If fullWidth is selected:
   # Use the maximum earnings_upper
   # In both cases, make sure the xlim is at least £10,000
-  xlim_upper <- max(if_else(fullWidth, max(earnings_upper_no_na), max(min(max(earnings_upper_no_na), 200000), earnings_UQ_no_na + 10000)), 10000)
-
+  # Adjusting now min/max earnings removed, Whiskers and FullWidth options no longer applicable
+  # xlim_upper <- max(if_else(fullWidth, max(earnings_upper_no_na), max(min(max(earnings_upper_no_na), 200000), earnings_UQ_no_na + 10000)), 10000)
+  xlim_upper <- max(earnings_UQ_no_na) + 10000
 
   temp_data <- temp_data %>%
     mutate(
@@ -341,16 +344,20 @@ plotEarnings <- function(earnings_selected, columnGrouping, fullWidth, adjust, w
         any(is.na(earnings_list)) ~ "Earnings Missing. Please report this error using the feedback form linked above",
         .default = NA
       ),
-      across(earnings_lower:earnings_upper, parseEarnings),
-      arrow = ifelse(earnings_upper > xlim_upper, row_num, NA),
-      arrow_val = ifelse(earnings_upper > xlim_upper, earnings_upper, NA),
-      earnings_upper = ifelse(earnings_upper > xlim_upper, xlim_upper, earnings_upper),
-      across(earnings_lower:earnings_upper, ~ replace(., . < 0, NA)),
+      # across(earnings_lower:earnings_upper, parseEarnings),
+      across(earnings_LQ:earnings_UQ, parseEarnings),
+      # Adjusting now max earnings removed, arrow/arrow_val/earnings_upper options no longer applicable
+      # arrow = ifelse(earnings_upper > xlim_upper, row_num, NA),
+      # arrow_val = ifelse(earnings_upper > xlim_upper, earnings_upper, NA),
+      # earnings_upper = ifelse(earnings_upper > xlim_upper, xlim_upper, earnings_upper),
+      # across(earnings_lower:earnings_upper, ~ replace(., . < 0, NA)),
+      across(earnings_LQ:earnings_UQ, ~ replace(., . < 0, NA)),
       combined_varying_filter = forcats::fct_inorder(combined_varying_filter),
     ) %>%
     ungroup() %>%
     mutate(
-      across(earnings_lower:earnings_upper, as.numeric),
+      # across(earnings_lower:earnings_upper, as.numeric),
+      across(earnings_LQ:earnings_UQ, as.numeric),
       noGroup = "",
       # Variable to fill by
       fill = !!sym(columnGrouping),
@@ -363,11 +370,13 @@ plotEarnings <- function(earnings_selected, columnGrouping, fullWidth, adjust, w
   bar_labels <- generate_bar_labels(temp_data, varying)
   plt <- ggplot(temp_data, aes(
     y = combined_varying_filter,
-    xmin = earnings_lower,
+    # xmin = earnings_lower,
+    xmin = earnings_LQ, # a quick fix to make the whiskers have zero length, effectively removing them from boxplot without breaking geom_boxplot_interactive()
     xlower = earnings_LQ,
     xmiddle = earnings_median,
     xupper = earnings_UQ,
-    xmax = earnings_upper,
+    # xmax = earnings_upper,
+    xmax = earnings_UQ,
     fill = fill,
     group = combined_varying_filter,
     tooltip = generate_earnings_tooltip(varying, combined_varying_filter, earnings_list, adjust, grads_earnings_include)
@@ -379,10 +388,11 @@ plotEarnings <- function(earnings_selected, columnGrouping, fullWidth, adjust, w
     geom_boxplot_interactive(stat = "identity", colour = "black", fatten = NULL, fill = NA, na.rm = TRUE) +
     # Median line colour mapping
     scale_colour_manual(values = c(light = "white", dark = "black")) +
+    # Now max earnings removed, arrow/arrow_val options no longer applicable:
     # Arrow in case the maximum is off the plot
-    geom_segment(aes(x = xlim_upper - 1000, xend = xlim_upper, y = arrow, yend = arrow), arrow = arrow(type = "closed", length = unit(0.15, "inches")), na.rm = TRUE) +
+    # geom_segment(aes(x = xlim_upper - 1000, xend = xlim_upper, y = arrow, yend = arrow), arrow = arrow(type = "closed", length = unit(0.15, "inches")), na.rm = TRUE) +
     # Label for the arrow
-    geom_text(aes(x = xlim_upper, y = arrow, label = ifelse(!is.na(arrow), label_pounds(arrow_val), NA)), nudge_y = 0.25, na.rm = TRUE) +
+    # geom_text(aes(x = xlim_upper, y = arrow, label = ifelse(!is.na(arrow), label_pounds(arrow_val), NA)), nudge_y = 0.25, na.rm = TRUE) +
     # No data text for missing data
     geom_text(aes(x = 0, label = text), hjust = 0, vjust = 0.5, size = 12 / .pt, na.rm = TRUE) +
     labs(

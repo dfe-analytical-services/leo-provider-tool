@@ -63,10 +63,7 @@ homepage_panel <- function() {
                     "for a full definition of each of these outcomes."
                   ),
                   h4(actionLink("earningsLink", "Earnings")),
-                  p("Earnings presents a boxplot of graduates earnings. It shows the minimum and maximum earnings belonging to the group as boxplot whiskers,
-                    the upper and lower quartiles as the central box, and the median as a line inside this box."),
-                  p("Due to the nature of the data, the maximum earnings is often very large when compared with the median and the quartiles. In this case, an arrow is plotted with the exact earnings amount above it.
-                    The checkbox 'Show full width of graph' disables this behaviour, and shows the maximum earnings on the axis."),
+                  p("Earnings presents a boxplot of graduates earnings. The size of the box shows the range in earnings between the lower and upper quartiles, with the median earnings being the line within the box."),
                   p("The earnings tab additionally has the option to adjust the earnings statistics.
                     The adjusted earnings is calculated by weighting each university’s graduates so that the distribution of graduates
                     from that HE institution is the same as that nationally. This can be toggled on or off with a checkbox.

@@ -564,21 +564,22 @@ server <- function(input, output, session) {
     # }
   )
 
-
-  observeEvent(input$earningsWhiskers, {
-    if (input$earningsWhiskers) {
-      enable("earningsFullWidth")
-    } else {
-      disable("earningsFullWidth")
-    }
-  })
+  # # Commenting out as with min/max earnings removed options for earnings plots Whiskers and FullWidth no longer needed
+  #   observeEvent(input$earningsWhiskers, {
+  #     if (input$earningsWhiskers) {
+  #       enable("earningsFullWidth")
+  #     } else {
+  #       disable("earningsFullWidth")
+  #     }
+  #   })
 
   output$colEarnings <- snapshotPreprocessOutput(
     # if(nrow(outcomes_selected$data) <= length(choicesSubject$filter_value)){
     renderGirafe({
       girafe(
         # ggobj = plotOutcomes(reactiveOutcomesSelected(), input$selectColGrouping),
-        ggobj = plotEarnings(selected_data(), input$selectEarningsColGrouping, input$earningsFullWidth, input$earningsAdjust, input$earningsWhiskers),
+        # ggobj = plotEarnings(selected_data(), input$selectEarningsColGrouping, input$earningsFullWidth, input$earningsAdjust, input$earningsWhiskers),
+        ggobj = plotEarnings(selected_data(), input$selectEarningsColGrouping, input$earningsAdjust),
         options = list(opts_sizing(rescale = TRUE, width = 1.0)),
         # width_svg = 5.0,
         # height_svg = 5.0
@@ -785,7 +786,8 @@ server <- function(input, output, session) {
           ),
           list(
             # Earnings values
-            targets = 20:29,
+            # targets = 20:29,
+            targets = 20:25,
             width = "10ch",
             className = "dt-body-right"
           ),
